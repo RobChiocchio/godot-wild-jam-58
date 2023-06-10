@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6l16qarqobyp"]
+[gd_scene load_steps=4 format=3 uid="uid://b6l16qarqobyp"]
 
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_u3l1a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6rilc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbi84"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,3 +22,9 @@ format = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 scale = Vector2(10, 1)
 shape = SubResource("WorldBoundaryShape2D_6rilc")
+
+[node name="TestBox" type="RigidBody2D" parent="."]
+position = Vector2(64, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestBox"]
+shape = SubResource("RectangleShape2D_xbi84")
