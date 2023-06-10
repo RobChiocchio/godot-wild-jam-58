@@ -27,5 +27,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		_sprite.stop()
+		
+		# Flip sprite if move left
+	if Input.is_action_pressed("move_left"):
+		_sprite.flip_h = true
+	
+	if Input.is_action_pressed("move_right"):
+		_sprite.flip_h = false
 
 	move_and_slide()
