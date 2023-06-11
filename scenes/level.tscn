@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://3kw0godr8tcv"]
+[gd_scene load_steps=9 format=3 uid="uid://3kw0godr8tcv"]
 
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_bvayf"]
 [ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_x070q"]
 [ext_resource type="Texture2D" uid="uid://xjblk1unfpjn" path="res://assets/ground/ground.png" id="2_7o1i0"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_63ddi"]
+[ext_resource type="Script" path="res://scripts/blowable.gd" id="4_wp5k8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37dqy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jvi4o"]
 
@@ -26,6 +29,13 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("3_63ddi")
+
+[node name="TestBox" type="RigidBody2D" parent="."]
+position = Vector2(64, -82)
+script = ExtResource("4_wp5k8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestBox"]
+shape = SubResource("RectangleShape2D_37dqy")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
