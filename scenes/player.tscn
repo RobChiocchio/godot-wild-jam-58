@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://xcfais7p0tc6"]
+[gd_scene load_steps=15 format=3 uid="uid://xcfais7p0tc6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_y1nol"]
 [ext_resource type="Texture2D" uid="uid://dtb256x46q66v" path="res://assets/sprites/betasprite.png" id="2_u03pw"]
 [ext_resource type="Script" path="res://scripts/wind.gd" id="3_wu53x"]
+[ext_resource type="Texture2D" uid="uid://c1je2b1gtdrhf" path="res://assets/effects/wind.png" id="5_5mdh4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gc15c"]
 atlas = ExtResource("2_u03pw")
@@ -48,6 +49,35 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqfnq"]
 size = Vector2(15, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qimqp"]
+atlas = ExtResource("5_5mdh4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qini"]
+atlas = ExtResource("5_5mdh4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l58r"]
+atlas = ExtResource("5_5mdh4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7vbh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qimqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qini")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l58r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_y1nol")
 
@@ -63,7 +93,13 @@ shape = SubResource("RectangleShape2D_oqfnq")
 script = ExtResource("3_wu53x")
 
 [node name="Collider" type="CollisionPolygon2D" parent="Wind"]
-visible = false
 scale = Vector2(10, 10)
 polygon = PackedVector2Array(1.75, 0, 4.9, 1.57, 4.9, -1.57)
 disabled = true
+
+[node name="Blow" type="AnimatedSprite2D" parent="Wind/Collider"]
+position = Vector2(3.3, 0)
+rotation = 0.785398
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_7vbh0")
+frame_progress = 0.925922

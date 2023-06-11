@@ -5,6 +5,7 @@ extends Area2D
 
 @onready var _player = get_parent()
 @onready var _collider = $Collider
+@onready var _sprite = $Collider/Blow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,7 @@ func _physics_process(delta):
 		_collider.look_at(target_pos)
 		_collider.disabled = false
 		_collider.visible = true
+		_sprite.play()
 		
 		var bodies = get_overlapping_bodies()
 		for body in bodies:
