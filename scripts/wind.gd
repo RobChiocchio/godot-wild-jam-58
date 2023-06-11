@@ -4,6 +4,7 @@ extends Area2D
 @export var aim_direction := Vector2()
 
 @onready var _player = get_parent()
+@onready var _collider = $Collider
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +19,10 @@ func _process(delta):
 	aim_direction = (target_pos - player_pos).normalized()
 	
 	if Input.is_action_pressed("blow"):
-		print(aim_direction)
-	pass
+		#_collider.look_at(aim_direction)
+		_collider.look_at(target_pos)
+		_collider.disabled = false
+		_collider.visible = true
+	else:
+		_collider.disabled = true
+		_collider.visible = false

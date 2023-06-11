@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xcfais7p0tc6"]
+[gd_scene load_steps=10 format=3 uid="uid://xcfais7p0tc6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_y1nol"]
 [ext_resource type="Texture2D" uid="uid://dtb256x46q66v" path="res://assets/sprites/betasprite.png" id="2_u03pw"]
@@ -48,9 +48,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqfnq"]
 size = Vector2(15, 24)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pmbll"]
-points = PackedVector2Array(0, 0, 0, 0, 0, 0)
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_y1nol")
 
@@ -65,5 +62,8 @@ shape = SubResource("RectangleShape2D_oqfnq")
 [node name="Wind" type="Area2D" parent="."]
 script = ExtResource("3_wu53x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wind"]
-shape = SubResource("ConvexPolygonShape2D_pmbll")
+[node name="Collider" type="CollisionPolygon2D" parent="Wind"]
+visible = false
+scale = Vector2(10, 10)
+polygon = PackedVector2Array(1.75, 0, 4.9, 1.57, 4.9, -1.57)
+disabled = true
