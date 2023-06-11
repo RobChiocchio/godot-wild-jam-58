@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://3kw0godr8tcv"]
+
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_bvayf"]
+[ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_x070q"]
+[ext_resource type="Texture2D" uid="uid://xjblk1unfpjn" path="res://assets/ground/ground.png" id="2_7o1i0"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_63ddi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvi4o"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f1b27"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_x070q")]
+visible = false
+scale = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 0, -28)
+scroll_ignore_camera_zoom = true
+
+[node name="Player" parent="." instance=ExtResource("1_bvayf")]
+position = Vector2(0, -11)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+script = ExtResource("3_63ddi")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_jvi4o")
+shape = SubResource("WorldBoundaryShape2D_f1b27")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -91.0
+offset_right = 7800.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7o1i0")
+stretch_mode = 1

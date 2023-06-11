@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh3nwhsunniko"]
+
+[ext_resource type="Texture2D" uid="uid://chl20jmii2fe8" path="res://assets/effects/rain.png" id="1_4q66s"]
+[ext_resource type="Texture2D" uid="uid://xjblk1unfpjn" path="res://assets/ground/ground.png" id="2_hq8pr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc1n4"]
+atlas = ExtResource("1_4q66s")
+region = Rect2(0, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbyg3"]
+atlas = ExtResource("1_4q66s")
+region = Rect2(800, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4h8o"]
+atlas = ExtResource("1_4q66s")
+region = Rect2(1600, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noqy2"]
+atlas = ExtResource("1_4q66s")
+region = Rect2(2400, 0, 800, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsbio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc1n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbyg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4h8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noqy2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Background" type="ParallaxBackground"]
+offset = Vector2(0, -28)
+scale = Vector2(0.25, 0.25)
+transform = Transform2D(0.25, 0, 0, 0.25, 0, -28)
+follow_viewport_enabled = true
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+
+[node name="Rain" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(800, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rain"]
+sprite_frames = SubResource("SpriteFrames_gsbio")
+frame_progress = 0.375614
+speed_scale = 2.0
+
+[node name="Ground" type="ParallaxLayer" parent="."]
+visible = false
+motion_mirroring = Vector2(800, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+texture = ExtResource("2_hq8pr")
