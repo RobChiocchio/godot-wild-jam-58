@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpualj77pww7j"]
+
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_151vm"]
+[ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_jc1vc"]
+[ext_resource type="Texture2D" uid="uid://dleh4wrwavlm2" path="res://assets/ground/desert_floor.png" id="2_jlxwk"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_bxx4r"]
+[ext_resource type="Script" path="res://scripts/blowable.gd" id="5_phl3w"]
+[ext_resource type="Texture2D" uid="uid://b2gjxm157tsyy" path="res://assets/objects/rcok.png" id="6_3eqy5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x2iqd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_jc1vc")]
+visible = false
+scale = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 0, -28)
+scroll_ignore_camera_zoom = true
+
+[node name="Player" parent="." instance=ExtResource("1_151vm")]
+position = Vector2(0, -11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="StaticBody2D"]
+offset_left = -161.0
+offset_top = -135.0
+offset_right = 135.0
+offset_bottom = 51.0
+texture = ExtResource("2_jlxwk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_x2iqd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+script = ExtResource("3_bxx4r")
+
+[node name="Rock" type="RigidBody2D" parent="."]
+position = Vector2(64, -82)
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 2.1)
+script = ExtResource("5_phl3w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock"]
+position = Vector2(-11.8, -12.6)
+polygon = PackedVector2Array(24, 15, 0, 15, 0, 10, 15, 0, 24, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rock"]
+position = Vector2(0.199997, -9.6)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("6_3eqy5")
+
+[node name="Marker2D" type="Marker2D" parent="Rock"]
