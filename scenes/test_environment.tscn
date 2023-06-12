@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7i6juejlfydf"]
+[gd_scene load_steps=11 format=3 uid="uid://dxax0s6rs3op7"]
 
 [ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_g8onu"]
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="2_iv2hp"]
