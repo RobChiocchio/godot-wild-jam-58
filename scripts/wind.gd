@@ -35,6 +35,23 @@ func _physics_process(delta):
 				body.succ(force)
 			else:
 				pass
+
+	if Input.is_action_pressed("succ"):
+		#_collider.look_at(aim_direction)
+		_collider.look_at(target_pos)
+		_collider.disabled = false
+		_collider.visible = true
+		_sprite.play()
+		
+		var bodies = get_overlapping_bodies()
+		for body in bodies:
+			if body.has_method("succ"):
+				var distance = body.position.distance_to(_player.position)
+				var strength = max_force #* 1/distance
+				var force = aim_direction*strength*-1
+				body.succ(force)
+			else:
+				pass
 				
 	else:
 		_collider.disabled = true
