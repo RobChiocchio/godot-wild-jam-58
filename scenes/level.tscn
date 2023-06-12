@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=10 format=3 uid="uid://3kw0godr8tcv"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://3kw0godr8tcv"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_bvayf"]
 [ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_x070q"]
@@ -6,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_63ddi"]
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="4_wp5k8"]
 [ext_resource type="Texture2D" uid="uid://bnyyo6kj6ftfw" path="res://assets/objects/placeholder_crate.png" id="5_v725f"]
+[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/metal_statue.tscn" id="7_6y0ta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37dqy"]
 
@@ -14,6 +19,9 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f1b27"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bvayf")]
+position = Vector2(1, -11)
 
 [node name="Background" parent="." instance=ExtResource("1_x070q")]
 visible = false
@@ -31,9 +39,6 @@ shape = SubResource("RectangleShape2D_37dqy")
 [node name="Sprite2D" type="Sprite2D" parent="TestBox"]
 scale = Vector2(0.62, 0.62)
 texture = ExtResource("5_v725f")
-
-[node name="Player" parent="." instance=ExtResource("1_bvayf")]
-position = Vector2(0, -11)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
@@ -63,3 +68,6 @@ grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7o1i0")
 stretch_mode = 1
+
+[node name="Node2D" parent="." instance=ExtResource("7_6y0ta")]
+position = Vector2(92, -7)
