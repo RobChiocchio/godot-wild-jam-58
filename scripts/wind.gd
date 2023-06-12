@@ -5,7 +5,7 @@ extends Area2D
 
 @onready var _player = get_parent()
 @onready var _collider = $Collider
-@onready var _sprite = $Collider/Blow
+@onready var _sprite = $Collider/AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,39 +19,29 @@ func _physics_process(delta):
 	
 	aim_direction = (target_pos - player_pos).normalized()
 	
-	if Input.is_action_pressed("blow"):
-		#_collider.look_at(aim_direction)
+	if Input.is_action_pressed("blow") or Input.is_action_pressed("succ"):
 		_collider.look_at(target_pos)
 		_collider.disabled = false
 		_collider.visible = true
-		_sprite.play()
 		
+		var mult = 1
+		if Input.is_action_pressed("succ"):
+			mult = -1
+			_sprite.play("succ")
+			_sprite.flip_h = true
+			_sprite.flip_v = true
+		else:
+			_sprite.play("blow")
+			_sprite.flip_h = false
+			_sprite.flip_v = false
+			
 		var bodies = get_overlapping_bodies()
 		for body in bodies:
 			if body.has_method("succ"):
 				var distance = body.position.distance_to(_player.position)
 				var strength = max_force #* 1/distance
-				var force = aim_direction*strength
+				var force = aim_direction * strength * mult
 				body.succ(force)
-			else:
-				pass
-
-	if Input.is_action_pressed("succ"):
-		#_collider.look_at(aim_direction)
-		_collider.look_at(target_pos)
-		_collider.disabled = false
-		_collider.visible = true
-		_sprite.play()
-		
-		var bodies = get_overlapping_bodies()
-		for body in bodies:
-			if body.has_method("succ"):
-				var distance = body.position.distance_to(_player.position)
-				var strength = max_force #* 1/distance
-				var force = aim_direction*strength*-1
-				body.succ(force)
-			else:
-				pass
 				
 	else:
 		_collider.disabled = true

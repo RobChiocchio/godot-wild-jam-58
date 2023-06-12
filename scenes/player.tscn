@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://xcfais7p0tc6"]
+[gd_scene load_steps=25 format=3 uid="uid://xcfais7p0tc6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_y1nol"]
 [ext_resource type="Texture2D" uid="uid://cs6fuho6qckda" path="res://assets/sprites/character_walk.png" id="2_xhp6v"]
 [ext_resource type="Script" path="res://scripts/wind.gd" id="3_wu53x"]
 [ext_resource type="Texture2D" uid="uid://c1je2b1gtdrhf" path="res://assets/effects/wind.png" id="5_5mdh4"]
+[ext_resource type="Texture2D" uid="uid://dejqg6bdm7ofr" path="res://assets/effects/suk.png" id="5_ajypt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uslsm"]
 atlas = ExtResource("2_xhp6v")
@@ -96,6 +97,22 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("5_5mdh4")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u5cw"]
+atlas = ExtResource("5_ajypt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whd1q"]
+atlas = ExtResource("5_ajypt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s52c1"]
+atlas = ExtResource("5_ajypt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jreh"]
+atlas = ExtResource("5_ajypt")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7vbh0"]
 animations = [{
 "frames": [{
@@ -109,7 +126,24 @@ animations = [{
 "texture": SubResource("AtlasTexture_6l58r")
 }],
 "loop": true,
-"name": &"default",
+"name": &"blow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u5cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whd1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s52c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jreh")
+}],
+"loop": true,
+"name": &"succ",
 "speed": 5.0
 }]
 
@@ -132,9 +166,9 @@ scale = Vector2(10, 10)
 polygon = PackedVector2Array(1.75, 0, 4.9, 1.57, 4.9, -1.57)
 disabled = true
 
-[node name="Blow" type="AnimatedSprite2D" parent="Wind/Collider"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wind/Collider"]
 position = Vector2(3.3, 0)
 rotation = 0.785398
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_7vbh0")
-frame_progress = 0.620163
+animation = &"succ"
