@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://biq8qan3m1fdy"]
+
+[ext_resource type="Script" path="res://scripts/blowable.gd" id="5_5ekg7"]
+[ext_resource type="Texture2D" uid="uid://b2gjxm157tsyy" path="res://assets/objects/rcok.png" id="6_28lj1"]
+
+[node name="Rock" type="RigidBody2D"]
+center_of_mass_mode = 1
+script = ExtResource("5_5ekg7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-11.8, -9.2)
+polygon = PackedVector2Array(24, 15, 0, 15, 0, 10, 15, 0, 24, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, -6.6)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("6_28lj1")
+
+[node name="Marker2D" type="Marker2D" parent="."]
