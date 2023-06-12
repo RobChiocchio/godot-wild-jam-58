@@ -39,8 +39,9 @@ func _physics_process(delta):
 		for body in bodies:
 			if body.has_method("succ"):
 				var distance = body.position.distance_to(_player.position)
-				var strength = max_force #* 1/distance
+				var strength = max_force #max(max_force - log(distance), 0)
 				var force = aim_direction * strength * mult
+				force.y = force.y * 0.25 # hack fix
 				body.succ(force)
 				
 	else:
