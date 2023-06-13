@@ -26,7 +26,8 @@ func _physics_process(delta):
 	if abs(joystick_vector.x) > deadzone or abs(joystick_vector.y) > deadzone:
 		aim_direction = joystick_vector.normalized()
 	else:
-		aim_direction = (target_pos - player_pos).normalized()
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			aim_direction = (target_pos - player_pos).normalized()
 
 	
 	if Input.is_action_pressed("blow") or Input.is_action_pressed("succ"):
