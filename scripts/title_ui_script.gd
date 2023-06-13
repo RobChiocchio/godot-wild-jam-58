@@ -23,7 +23,7 @@ func _on_start_button_pressed():
 	for c in main_menu_ui_node.get_children():
 		main_menu_ui_node.remove_child(c)
 		c.queue_free()
-	load_level.call_deferred(load("res://scenes/level_1.tscn"))
+	load_level.call_deferred(load("res://scenes/levels/level_1.tscn"))
 
 
 func _on_settings_button_pressed():

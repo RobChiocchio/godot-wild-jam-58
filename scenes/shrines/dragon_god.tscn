@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://dx0qn1r8fb3xc"]
+
+[ext_resource type="Texture2D" uid="uid://cpkdbeyorl1tm" path="res://assets/sprites/shinto_shrine.png" id="1_cljbc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_parjc"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(0, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j778s"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(250, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8nva"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(500, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edoms"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(750, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76t3g"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(1000, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npvik"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(1250, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5mpd"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(1500, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpeai"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(1750, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ql2o"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(2000, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjnn6"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(2250, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g6wh"]
+atlas = ExtResource("1_cljbc")
+region = Rect2(2500, 0, 250, 318)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fw7lb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_parjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j778s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8nva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edoms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76t3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npvik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5mpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpeai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ql2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjnn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g6wh")
+}],
+"loop": true,
+"name": &"dragon_god",
+"speed": 10.0
+}]
+
+[node name="dragon_god" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -108)
+sprite_frames = SubResource("SpriteFrames_fw7lb")
+animation = &"dragon_god"
+frame = 5
+frame_progress = 0.727756
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-405, 140)
+polygon = PackedVector2Array(319, -140, 489, -140, 489, -149, 462, -218, 472, -228, 472, -234, 454, -241, 352, -241, 336, -234, 336, -228, 346, -218, 319, -149)

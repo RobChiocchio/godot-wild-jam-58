@@ -149,11 +149,14 @@ collision_priority = 2.0
 script = ExtResource("1_y1nol")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_jtop4")
 animation = &"walk"
+frame_progress = 0.187519
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(7, -10, 0, -12, -7, -10, -7, 10, 7, 10)
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(4, -9, 2, -12, -6, -12, -8, -9, -8, 10, 4, 10, 4, 7)
 
 [node name="Wind" type="Area2D" parent="."]
 script = ExtResource("3_wu53x")

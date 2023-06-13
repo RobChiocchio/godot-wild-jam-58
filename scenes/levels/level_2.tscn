@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://eqoq62vdw0fo"]
+[gd_scene load_steps=13 format=3 uid="uid://eqoq62vdw0fo"]
 
 [ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/platform_medium.tscn" id="1_c2dgy"]
+[ext_resource type="PackedScene" uid="uid://biq8qan3m1fdy" path="res://scenes/rock.tscn" id="1_ejdjx"]
 [ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/platform.tscn" id="2_8ts8j"]
 [ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/platform_small.tscn" id="3_kxri4"]
 [ext_resource type="PackedScene" path="res://scenes/background.tscn" id="4_ol6g0"]
@@ -16,7 +17,15 @@ friction = 0.8
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d1xjk"]
 
-[node name="Node2D" type="Node2D"]
+[node name="level_2" type="Node2D"]
+
+[node name="rocks" type="Node" parent="."]
+
+[node name="left_rock" parent="rocks" instance=ExtResource("1_ejdjx")]
+position = Vector2(5, -99)
+
+[node name="right_rock" parent="rocks" instance=ExtResource("1_ejdjx")]
+position = Vector2(168, -142)
 
 [node name="Node" type="Node" parent="."]
 
@@ -65,13 +74,13 @@ stretch_mode = 1
 [node name="Player" parent="." instance=ExtResource("6_ubur7")]
 position = Vector2(1, -11)
 
+[node name="tefnut_shrine" parent="." instance=ExtResource("8_kcbvk")]
+position = Vector2(65, 2)
+scale = Vector2(0.4, 0.4)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("7_364t1")
-
-[node name="tefnut_shrine" parent="." instance=ExtResource("8_kcbvk")]
-position = Vector2(65, 2)
-scale = Vector2(0.4, 0.4)

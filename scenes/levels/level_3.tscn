@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://f78um2elq20g"]
+
+[ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/platform_medium.tscn" id="1_3cwky"]
+[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/platform.tscn" id="2_p2slm"]
+[ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/platform_small.tscn" id="3_y24xq"]
+[ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="4_l4oue"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="5_inpm2"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="6_pkb0a"]
+[ext_resource type="PackedScene" uid="uid://dx0qn1r8fb3xc" path="res://scenes/shrines/dragon_god.tscn" id="7_ec31i"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2ma6"]
+friction = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyj1h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_plqi7"]
+
+[node name="level_3" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="medium_platform" parent="Node" instance=ExtResource("1_3cwky")]
+position = Vector2(-93, -93)
+
+[node name="platform" parent="Node" instance=ExtResource("2_p2slm")]
+position = Vector2(-154, -47)
+
+[node name="small_platform" parent="Node" instance=ExtResource("3_y24xq")]
+position = Vector2(134, -91)
+
+[node name="platform2" parent="Node" instance=ExtResource("2_p2slm")]
+position = Vector2(155, -136)
+
+[node name="platform3" parent="Node" instance=ExtResource("2_p2slm")]
+position = Vector2(170, -48)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_q2ma6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_nyj1h")
+shape = SubResource("WorldBoundaryShape2D_plqi7")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -91.0
+offset_right = 9000.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_l4oue")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("5_inpm2")]
+position = Vector2(1, -11)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+script = ExtResource("6_pkb0a")
+
+[node name="dragon_god" parent="." instance=ExtResource("7_ec31i")]
+position = Vector2(72, 0)
+scale = Vector2(0.4, 0.4)
