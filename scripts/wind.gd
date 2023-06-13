@@ -22,13 +22,9 @@ func _physics_process(delta):
 	var joystick_vector = Vector2()
 	joystick_vector.x = Input.get_joy_axis(1, JOY_AXIS_RIGHT_X)
 	joystick_vector.y = Input.get_joy_axis(1, JOY_AXIS_RIGHT_Y)
-	
-	print("x axis ", joystick_vector.x)
-	print("y axis ", joystick_vector.y)
 
 	if abs(joystick_vector.x) > deadzone or abs(joystick_vector.y) > deadzone:
 		aim_direction = joystick_vector.normalized()
-		print("joystick aim direction")
 	else:
 		aim_direction = (target_pos - player_pos).normalized()
 

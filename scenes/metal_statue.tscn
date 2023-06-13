@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmdogsaiit5c" path="res://assets/objects/betastatuemetal.png" id="1_g5hs6"]
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="1_ksmsw"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Statue" type="Node2D"]
 scale = Vector2(0.8, 0.8)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
