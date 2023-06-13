@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xcfais7p0tc6"]
+[gd_scene load_steps=24 format=3 uid="uid://xcfais7p0tc6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_y1nol"]
 [ext_resource type="Texture2D" uid="uid://cs6fuho6qckda" path="res://assets/sprites/character_walk.png" id="2_xhp6v"]
@@ -82,9 +82,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqfnq"]
-size = Vector2(15, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qimqp"]
 atlas = ExtResource("5_5mdh4")
 region = Rect2(32, 0, 32, 32)
@@ -155,9 +152,8 @@ script = ExtResource("1_y1nol")
 sprite_frames = SubResource("SpriteFrames_jtop4")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2)
-shape = SubResource("RectangleShape2D_oqfnq")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(7, -10, 0, -12, -7, -10, -7, 10, 7, 10)
 
 [node name="Wind" type="Area2D" parent="."]
 script = ExtResource("3_wu53x")
