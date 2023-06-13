@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3kw0godr8tcv"]
+[gd_scene load_steps=12 format=3 uid="uid://3kw0godr8tcv"]
 
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_bvayf"]
 [ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_x070q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_63ddi"]
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="4_wp5k8"]
 [ext_resource type="Texture2D" uid="uid://bnyyo6kj6ftfw" path="res://assets/objects/placeholder_crate.png" id="5_v725f"]
+[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/metal_statue.tscn" id="7_7ya3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37dqy"]
 
@@ -43,6 +44,9 @@ position = Vector2(0, -66)
 zoom = Vector2(4, 4)
 position_smoothing_speed = 20.0
 script = ExtResource("3_63ddi")
+
+[node name="Statue" parent="." instance=ExtResource("7_7ya3j")]
+position = Vector2(200, -10)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_p3ksl")

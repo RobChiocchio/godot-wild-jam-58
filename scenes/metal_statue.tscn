@@ -4,18 +4,25 @@
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="1_ksmsw"]
 
 [node name="Statue" type="Node2D"]
-scale = Vector2(0.8, 0.8)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 mass = 1.25
 script = ExtResource("1_ksmsw")
 
-[node name="TextureRect" type="TextureRect" parent="RigidBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-14, 10, 13, 10, 13, -3, 12, -3, 12, -46, -11, -46, -11, -55, -18, -55, -18, -4, -14, -4)
+
+[node name="TextureRect" type="TextureRect" parent="RigidBody2D/CollisionPolygon2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -22.0
 offset_top = -62.0
 offset_right = 18.0
 offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_g5hs6")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
-polygon = PackedVector2Array(-14, 10, 13, 10, 13, -3, 12, -3, 12, -46, -11, -46, -11, -55, -18, -55, -18, -4, -14, -4)
