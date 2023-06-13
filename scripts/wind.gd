@@ -7,6 +7,8 @@ extends Area2D
 @onready var _collider = $Collider
 @onready var _sprite = $Collider/AnimatedSprite2D
 
+var deadzone = 0.25
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,10 +19,22 @@ func _physics_process(delta):
 	var player_pos = _player.global_transform.origin
 	var target_pos = get_global_mouse_position()
 	
-	aim_direction = (target_pos - player_pos).normalized()
+	var joystick_vector = Vector2()
+	joystick_vector.x = Input.get_joy_axis(1, JOY_AXIS_RIGHT_X)
+	joystick_vector.y = Input.get_joy_axis(1, JOY_AXIS_RIGHT_Y)
+	
+	print("x axis ", joystick_vector.x)
+	print("y axis ", joystick_vector.y)
+
+	if abs(joystick_vector.x) > deadzone or abs(joystick_vector.y) > deadzone:
+		aim_direction = joystick_vector.normalized()
+		print("joystick aim direction")
+	else:
+		aim_direction = (target_pos - player_pos).normalized()
+
 	
 	if Input.is_action_pressed("blow") or Input.is_action_pressed("succ"):
-		_collider.look_at(target_pos)
+		_collider.look_at(_player.position + aim_direction)
 		_collider.disabled = false
 		_collider.visible = true
 		
