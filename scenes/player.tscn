@@ -148,6 +148,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_priority = 2.0
 script = ExtResource("1_y1nol")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
