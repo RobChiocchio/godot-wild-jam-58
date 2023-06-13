@@ -51,7 +51,6 @@ physics_material_override = SubResource("PhysicsMaterial_p3ksl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 material = SubResource("ShaderMaterial_jvi4o")
 shape = SubResource("WorldBoundaryShape2D_f1b27")
-one_way_collision = true
 
 [node name="TextureRect" type="TextureRect" parent="Ground"]
 texture_repeat = 2
