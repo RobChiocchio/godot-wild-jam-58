@@ -1,30 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6l16qarqobyp"]
+[gd_scene load_steps=5 format=3 uid="uid://b6l16qarqobyp"]
 
-[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_u3l1a"]
+[ext_resource type="PackedScene" uid="uid://7f2csa8mkldc" path="res://scenes/level_1.tscn" id="2_f0rbs"]
+[ext_resource type="Script" path="res://scripts/title_ui_script.gd" id="2_gj461"]
+[ext_resource type="Texture2D" uid="uid://dhfo1vlgtpmcw" path="res://assets/ui/single_button.png" id="3_3c6d7"]
+[ext_resource type="Texture2D" uid="uid://dcyn1kxv4kpi7" path="res://assets/ui/wind.png" id="4_tlss5"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6rilc"]
+[node name="main" type="Node2D"]
+script = ExtResource("2_gj461")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbi84"]
+[node name="level" parent="." instance=ExtResource("2_f0rbs")]
 
-[node name="Node2D" type="Node2D"]
+[node name="main_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Player" parent="." instance=ExtResource("1_u3l1a")]
-position = Vector2(0, -16)
+[node name="click" type="AudioStreamPlayer2D" parent="main_menu"]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+[node name="title_ui" type="Control" parent="main_menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="start_button" type="TextureButton" parent="main_menu/title_ui"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 584.0
+offset_bottom = 263.0
+texture_normal = ExtResource("3_3c6d7")
+stretch_mode = 0
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="settings_button" type="TextureButton" parent="main_menu/title_ui"]
+layout_mode = 0
+offset_top = 293.0
+offset_right = 584.0
+offset_bottom = 506.0
+texture_normal = ExtResource("3_3c6d7")
+stretch_mode = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-scale = Vector2(10, 1)
-shape = SubResource("WorldBoundaryShape2D_6rilc")
+[node name="credits_button" type="TextureButton" parent="main_menu/title_ui"]
+layout_mode = 0
+offset_top = 536.0
+offset_right = 584.0
+offset_bottom = 749.0
+texture_normal = ExtResource("3_3c6d7")
+stretch_mode = 0
 
-[node name="TestBox" type="RigidBody2D" parent="."]
-position = Vector2(64, -16)
+[node name="TextureRect" type="TextureRect" parent="main_menu/title_ui"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 85.0
+offset_right = 197.0
+offset_bottom = 226.0
+texture = ExtResource("4_tlss5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestBox"]
-shape = SubResource("RectangleShape2D_xbi84")
+[node name="settings_ui" type="Control" parent="main_menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="credits_ui" type="Control" parent="main_menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="main_menu/title_ui/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="main_menu/title_ui/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="main_menu/title_ui/credits_button" to="." method="_on_credits_button_pressed"]
