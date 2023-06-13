@@ -36,6 +36,8 @@ func _physics_process(delta):
 				velocity.x = move_toward(velocity.x, direction*SPEED, SPEED/5)
 			else:
 				velocity.x = move_toward(velocity.x, direction*SPEED/1.2, SPEED/12)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, 0.1)
 
 	# Grounded character control
 	if grounded:
