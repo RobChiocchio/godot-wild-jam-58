@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dpualj77pww7j"]
 
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_151vm"]
-[ext_resource type="PackedScene" uid="uid://dh3nwhsunniko" path="res://scenes/background.tscn" id="1_jc1vc"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="1_jc1vc"]
 [ext_resource type="Texture2D" uid="uid://dleh4wrwavlm2" path="res://assets/ground/desert_floor.png" id="2_jlxwk"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_bxx4r"]
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="5_phl3w"]
