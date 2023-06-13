@@ -2,13 +2,13 @@ extends Node2D
 
 @onready var main_node = get_tree()
 @onready var main_menu_ui_node = get_node("main_menu")
-@onready var level_node = get_node("level")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for c in level_node.get_children():
-		level_node.remove_child(c)
-		c.queue_free()
+	pass
+#	for c in level_node.get_children():
+#		level_node.remove_child(c)
+#		c.queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

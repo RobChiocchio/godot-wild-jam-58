@@ -1,14 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6l16qarqobyp"]
+[gd_scene load_steps=4 format=3 uid="uid://b6l16qarqobyp"]
 
-[ext_resource type="PackedScene" uid="uid://7f2csa8mkldc" path="res://scenes/level_1.tscn" id="2_f0rbs"]
 [ext_resource type="Script" path="res://scripts/title_ui_script.gd" id="2_gj461"]
 [ext_resource type="Texture2D" uid="uid://dhfo1vlgtpmcw" path="res://assets/ui/single_button.png" id="3_3c6d7"]
 [ext_resource type="Texture2D" uid="uid://dcyn1kxv4kpi7" path="res://assets/ui/wind.png" id="4_tlss5"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("2_gj461")
-
-[node name="level" parent="." instance=ExtResource("2_f0rbs")]
 
 [node name="main_menu" type="Control" parent="."]
 layout_mode = 3
