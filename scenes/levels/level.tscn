@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://3kw0godr8tcv"]
 
-[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="1_bvayf"]
-[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="1_x070q"]
-[ext_resource type="Texture2D" uid="uid://xjblk1unfpjn" path="res://assets/ground/ground.png" id="2_7o1i0"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="3_63ddi"]
-[ext_resource type="Script" path="res://scripts/blowable.gd" id="4_wp5k8"]
-[ext_resource type="Texture2D" uid="uid://bnyyo6kj6ftfw" path="res://assets/objects/placeholder_crate.png" id="5_v725f"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="1_ogrg0"]
+[ext_resource type="Script" path="res://scripts/blowable.gd" id="2_15fmy"]
+[ext_resource type="Texture2D" uid="uid://bnyyo6kj6ftfw" path="res://assets/objects/placeholder_crate.png" id="3_3yu43"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="4_xlqgp"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="5_xe01s"]
+[ext_resource type="Texture2D" uid="uid://xjblk1unfpjn" path="res://assets/ground/ground.png" id="6_73hq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37dqy"]
 
@@ -18,31 +18,30 @@ friction = 0.8
 
 [node name="Level" type="Node2D"]
 
-[node name="Background" parent="." instance=ExtResource("1_x070q")]
-visible = false
+[node name="Background" parent="." instance=ExtResource("1_ogrg0")]
 scale = Vector2(1, 1)
 transform = Transform2D(1, 0, 0, 1, 0, -28)
 scroll_ignore_camera_zoom = true
 
 [node name="TestBox" type="RigidBody2D" parent="."]
 position = Vector2(300, -82)
-script = ExtResource("4_wp5k8")
+script = ExtResource("2_15fmy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestBox"]
 shape = SubResource("RectangleShape2D_37dqy")
 
 [node name="Sprite2D" type="Sprite2D" parent="TestBox"]
 scale = Vector2(0.62, 0.62)
-texture = ExtResource("5_v725f")
+texture = ExtResource("3_3yu43")
 
-[node name="Player" parent="." instance=ExtResource("1_bvayf")]
+[node name="Player" parent="." instance=ExtResource("4_xlqgp")]
 position = Vector2(0, -11)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
 zoom = Vector2(4, 4)
 position_smoothing_speed = 20.0
-script = ExtResource("3_63ddi")
+script = ExtResource("5_xe01s")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_p3ksl")
@@ -63,5 +62,5 @@ offset_bottom = 409.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_7o1i0")
+texture = ExtResource("6_73hq1")
 stretch_mode = 1
