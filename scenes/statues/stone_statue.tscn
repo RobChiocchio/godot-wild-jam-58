@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ilngxnkqrxmu"]
+
+[ext_resource type="Script" path="res://scripts/blowable.gd" id="1_8w7j7"]
+[ext_resource type="Texture2D" uid="uid://bwvpy8tpjqnjb" path="res://assets/objects/betastatue_stone.png" id="2_oujsr"]
+
+[node name="Statue" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 1.25
+script = ExtResource("1_8w7j7")
+
+[node name="TextureRect" type="TextureRect" parent="RigidBody2D"]
+offset_left = -22.0
+offset_top = -62.0
+offset_right = 18.0
+offset_bottom = 10.0
+texture = ExtResource("2_oujsr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(-14, 10, 13, 10, 13, -3, 12, -3, 12, -46, -11, -46, -11, -55, -18, -55, -18, -4, -14, -4)

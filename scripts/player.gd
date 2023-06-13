@@ -10,6 +10,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var _sprite = $AnimatedSprite2D
 
+func _process(delta):
+	move_and_slide()
+
 func _physics_process(delta):
 
 	# Add the gravity.
@@ -17,7 +20,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
 	var grounded = is_on_floor()
-	var falling = velocity.y > 0
+	
 	var facing = false
 	
 	if Input.is_action_pressed("move_left") && _sprite.flip_h == true:
@@ -25,7 +28,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("move_right") && _sprite.flip_h == false:
 		facing = true
-
+	
 	#airborn character control
 	if not grounded:
 		#Input timer for double tap
@@ -49,15 +52,15 @@ func _physics_process(delta):
 			_sprite.stop()
 			
 		# Flip sprite if move left
-		if Input.is_action_pressed("move_left"):
+		if Input.is_action_pressed("move_left") and _sprite.flip_h == false:
 			_sprite.flip_h = true
+		#	$CollisionShape2D.position.x *= -1
 		
 		if Input.is_action_pressed("move_right"):
 			_sprite.flip_h = false
+		#	$CollisionShape2D.position.x *= -1
 		
 		# Handle Jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			_sprite.stop()
-
-	move_and_slide()

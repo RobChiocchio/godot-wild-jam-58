@@ -15,7 +15,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	var player_pos = _player.global_transform.origin
 	var target_pos = get_global_mouse_position()
 	

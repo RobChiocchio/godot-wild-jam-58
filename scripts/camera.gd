@@ -11,10 +11,9 @@ var neg_bound = self.position.x - bound_offset
 func _ready():
 	pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	var speed = _player.velocity.x
-	
+func _physics_process(_delta):
 	#if _player.position.x > pos_bound or _player.position.x < neg_bound:
 	#	pos_bound = lerp(pos_bound, _player.position.x + bound_offset, 0.1)
 	#	neg_bound = lerp(neg_bound, _player.position.x - bound_offset, 0.1)
