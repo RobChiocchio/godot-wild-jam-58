@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://rinhfn2fhyk4"]
+
+[ext_resource type="Texture2D" uid="uid://v02l5oc3imcu" path="res://assets/prefabs/platform.png" id="1_nb67a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e36ch"]
+size = Vector2(31.875, 13.6667)
+
+[node name="small_platform" type="StaticBody2D"]
+position = Vector2(-1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 111.0
+offset_bottom = 49.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_nb67a")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17.0625, 7.16667)
+shape = SubResource("RectangleShape2D_e36ch")

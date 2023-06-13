@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://3dhenop7fhd1"]
+
+[ext_resource type="Texture2D" uid="uid://b3ynvgkbuqfnv" path="res://assets/prefabs/platform_middle.png" id="1_d83qa"]
+[ext_resource type="Texture2D" uid="uid://ckyssskoy7bwv" path="res://assets/prefabs/platform_end.png" id="2_ajr82"]
+[ext_resource type="Texture2D" uid="uid://byvk1qav43jg5" path="res://assets/prefabs/platform_end_right.png" id="3_jtp0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e36ch"]
+size = Vector2(109, 14)
+
+[node name="medium_platform" type="StaticBody2D"]
+position = Vector2(-1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 12.0
+offset_right = 302.0
+offset_bottom = 49.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_d83qa")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 49.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ajr82")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 99.0
+offset_right = 139.0
+offset_bottom = 49.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_jtp0s")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(55.5, 7)
+shape = SubResource("RectangleShape2D_e36ch")
