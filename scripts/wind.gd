@@ -20,13 +20,13 @@ func _physics_process(_delta):
 	var target_pos = get_global_mouse_position()
 	
 	var joystick_vector = Vector2()
-	joystick_vector.x = Input.get_joy_axis(1, JOY_AXIS_RIGHT_X)
-	joystick_vector.y = Input.get_joy_axis(1, JOY_AXIS_RIGHT_Y)
+	joystick_vector.x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+	joystick_vector.y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
 
 	if abs(joystick_vector.x) > deadzone or abs(joystick_vector.y) > deadzone:
 		aim_direction = joystick_vector.normalized()
 	else:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 			aim_direction = (target_pos - player_pos).normalized()
 
 	
