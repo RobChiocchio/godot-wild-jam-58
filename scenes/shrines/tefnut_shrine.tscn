@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://qi66qds5jsgi"]
+[gd_scene load_steps=31 format=3 uid="uid://qi66qds5jsgi"]
 
 [ext_resource type="Texture2D" uid="uid://cqraodridwg73" path="res://assets/sprites/tefnutfullsprite.png" id="1_qw2jr"]
+[ext_resource type="Texture2D" uid="uid://cbedoceygbl57" path="res://assets/sprites/leavebetatemple.png" id="2_tpjc7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vv16i"]
 atlas = ExtResource("1_qw2jr")
@@ -50,6 +51,66 @@ region = Rect2(2360, 0, 236, 294)
 atlas = ExtResource("1_qw2jr")
 region = Rect2(2596, 0, 236, 294)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pei8n"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(0, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu4mj"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(229, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdt31"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(458, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe8uk"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(687, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfkp2"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(916, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo00h"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(1145, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfhf8"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(1374, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lw7s"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(1603, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yltt"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(1832, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uk5x"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(2061, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic80n"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(2290, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcx5h"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(2519, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w43wi"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(2748, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff8ra"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(2977, 0, 229, 294)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtvf7"]
+atlas = ExtResource("2_tpjc7")
+region = Rect2(3206, 0, 229, 294)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7mnxu"]
 animations = [{
 "frames": [{
@@ -92,18 +153,69 @@ animations = [{
 "loop": true,
 "name": &"tefnut_full",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pei8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu4mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdt31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe8uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfkp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo00h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfhf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lw7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yltt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uk5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic80n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcx5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w43wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff8ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtvf7")
+}],
+"loop": false,
+"name": &"tefnut_leaves",
+"speed": 10.0
 }]
 
-[node name="tefnut_shrine" type="Node2D"]
+[node name="tefnut_body" type="StaticBody2D"]
+
+[node name="intact_colllision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-405, 140)
+polygon = PackedVector2Array(305, -141, 504, -141, 504, -152, 410, -267, 399, -267, 305, -152)
+
+[node name="destroyed_collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-97, -1, 103, -1, 103, -19, 75, -46, 23, -46, 23, -34, -33, -34, -41, -43, -71, -43, -97, -14)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -136)
 sprite_frames = SubResource("SpriteFrames_7mnxu")
-animation = &"tefnut_full"
+animation = &"tefnut_leaves"
 autoplay = "tefnut_full"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-405, 140)
-polygon = PackedVector2Array(305, -141, 504, -141, 504, -152, 410, -267, 399, -267, 305, -152)

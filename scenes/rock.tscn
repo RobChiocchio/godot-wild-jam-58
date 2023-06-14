@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="5_5ekg7"]
 [ext_resource type="Texture2D" uid="uid://b2gjxm157tsyy" path="res://assets/objects/rcok.png" id="6_28lj1"]
 
-[node name="Rock" type="RigidBody2D"]
+[node name="Rock" type="RigidBody2D" groups=["rocks"]]
 center_of_mass_mode = 1
 script = ExtResource("5_5ekg7")
 
