@@ -93,6 +93,7 @@ animations = [{
 position = Vector2(0, -108)
 sprite_frames = SubResource("SpriteFrames_fw7lb")
 animation = &"dragon_god"
+autoplay = "dragon_god"
 frame = 5
 frame_progress = 0.727756
 

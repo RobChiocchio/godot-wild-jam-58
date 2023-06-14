@@ -152,7 +152,8 @@ script = ExtResource("1_y1nol")
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_jtop4")
 animation = &"walk"
-frame_progress = 0.187519
+frame = 6
+frame_progress = 0.389013
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-1, 0)

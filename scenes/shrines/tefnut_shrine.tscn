@@ -100,6 +100,7 @@ animations = [{
 position = Vector2(5, -136)
 sprite_frames = SubResource("SpriteFrames_7mnxu")
 animation = &"tefnut_full"
+autoplay = "tefnut_full"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

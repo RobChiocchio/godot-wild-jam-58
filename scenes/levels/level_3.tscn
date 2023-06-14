@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://f78um2elq20g"]
+[gd_scene load_steps=12 format=3 uid="uid://f78um2elq20g"]
 
 [ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/platform_medium.tscn" id="1_3cwky"]
+[ext_resource type="PackedScene" uid="uid://b3d70o2bi138d" path="res://scenes/background.tscn" id="1_fwook"]
 [ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/platform.tscn" id="2_p2slm"]
 [ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/platform_small.tscn" id="3_y24xq"]
 [ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="4_l4oue"]
@@ -17,16 +18,20 @@ friction = 0.8
 
 [node name="level_3" type="Node2D"]
 
+[node name="Background" parent="." instance=ExtResource("1_fwook")]
+offset = Vector2(0, 0)
+transform = Transform2D(0.25, 0, 0, 0.25, 0, 0)
+
 [node name="Node" type="Node" parent="."]
 
 [node name="medium_platform" parent="Node" instance=ExtResource("1_3cwky")]
-position = Vector2(-93, -93)
+position = Vector2(-132, -131)
 
 [node name="platform" parent="Node" instance=ExtResource("2_p2slm")]
-position = Vector2(-154, -47)
+position = Vector2(-40, -98)
 
 [node name="small_platform" parent="Node" instance=ExtResource("3_y24xq")]
-position = Vector2(134, -91)
+position = Vector2(76, -128)
 
 [node name="platform2" parent="Node" instance=ExtResource("2_p2slm")]
 position = Vector2(155, -136)
@@ -42,6 +47,7 @@ material = SubResource("ShaderMaterial_nyj1h")
 shape = SubResource("WorldBoundaryShape2D_plqi7")
 
 [node name="TextureRect" type="TextureRect" parent="Ground"]
+visible = false
 texture_repeat = 2
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +68,6 @@ position = Vector2(1, -11)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
 zoom = Vector2(4, 4)
-position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("6_pkb0a")
 
