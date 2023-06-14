@@ -155,9 +155,13 @@ animation = &"walk"
 frame = 6
 frame_progress = 0.389013
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+[node name="collision_right" type="CollisionPolygon2D" parent="."]
 position = Vector2(-1, 0)
-polygon = PackedVector2Array(4, -9, 2, -12, -6, -12, -8, -9, -8, 10, 4, 10, 4, 7)
+polygon = PackedVector2Array(3, -9, 2, -11, 0, -12, -5, -11, -6, -8, -7, 10, 1, 10, 1, 0)
+
+[node name="collision_left" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(4, -8, 3, -11, -2, -12, -4, -11, -5, -9, -3, 0, -3, 10, 5, 10)
 
 [node name="Wind" type="Area2D" parent="."]
 script = ExtResource("3_wu53x")

@@ -13,3 +13,7 @@ func _process(_delta):
 func succ(force) -> void:
 	self.apply_central_force(force)
 	
+
+
+func _on_body_entered(body):
+	pass # Replace with function body.

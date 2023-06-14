@@ -9,6 +9,10 @@ const AIR_DRAG = 100.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var _sprite = $AnimatedSprite2D
+@onready var _player = self
+
+@onready var left_box = $collision_left
+@onready var right_box = $collision_right
 
 func _process(delta):
 	pass
@@ -54,12 +58,18 @@ func _physics_process(delta):
 		# Flip sprite if move left
 		if Input.is_action_pressed("move_left") and _sprite.flip_h == false:
 			_sprite.flip_h = true
-		#	$CollisionShape2D.position.x *= -1
+			left_box.disabled = false
+			left_box.visible = true
+			right_box.disabled = true
+			right_box.visible = false
 		
 		if Input.is_action_pressed("move_right"):
 			_sprite.flip_h = false
-		#	$CollisionShape2D.position.x *= -1
-		
+			left_box.disabled = true
+			left_box.visible = false
+			right_box.disabled = false
+			right_box.visible = true
+			
 		# Handle Jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY

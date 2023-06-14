@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://eqoq62vdw0fo"]
+[gd_scene load_steps=14 format=3 uid="uid://eqoq62vdw0fo"]
 
 [ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/platform_medium.tscn" id="1_c2dgy"]
 [ext_resource type="PackedScene" uid="uid://biq8qan3m1fdy" path="res://scenes/rock.tscn" id="1_ejdjx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="6_ubur7"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="7_364t1"]
 [ext_resource type="PackedScene" uid="uid://qi66qds5jsgi" path="res://scenes/shrines/tefnut_shrine.tscn" id="8_kcbvk"]
+[ext_resource type="Script" path="res://scripts/tefnut_shrine.gd" id="9_rpr0d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ynxur"]
 friction = 0.8
@@ -22,10 +23,12 @@ friction = 0.8
 [node name="rocks" type="Node" parent="."]
 
 [node name="left_rock" parent="rocks" instance=ExtResource("1_ejdjx")]
-position = Vector2(-64, -143)
+position = Vector2(-62, -138)
+max_contacts_reported = 5
+contact_monitor = true
 
 [node name="right_rock" parent="rocks" instance=ExtResource("1_ejdjx")]
-position = Vector2(184, -138)
+position = Vector2(184, -147)
 
 [node name="Node" type="Node" parent="."]
 
@@ -48,7 +51,7 @@ position = Vector2(122, -94)
 position = Vector2(174, -47)
 
 [node name="platform4" parent="Node" instance=ExtResource("2_8ts8j")]
-position = Vector2(-102, -136)
+position = Vector2(-102, -129)
 
 [node name="Background" parent="." instance=ExtResource("4_ol6g0")]
 offset = Vector2(640, 100)
@@ -84,9 +87,12 @@ position = Vector2(1, -11)
 [node name="tefnut_shrine" parent="." instance=ExtResource("8_kcbvk")]
 position = Vector2(65, 2)
 scale = Vector2(0.4, 0.4)
+script = ExtResource("9_rpr0d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
 zoom = Vector2(4, 4)
 position_smoothing_speed = 20.0
 script = ExtResource("7_364t1")
+
+[connection signal="body_entered" from="rocks/left_rock" to="tefnut_shrine" method="_on_left_rock_body_entered"]
