@@ -28,6 +28,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [input]
 
 move_left={

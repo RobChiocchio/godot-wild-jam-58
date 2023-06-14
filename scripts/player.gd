@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var _sprite = $AnimatedSprite2D
 
 func _process(delta):
-	move_and_slide()
+	pass
 
 func _physics_process(delta):
 
@@ -64,3 +64,5 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			_sprite.stop()
+	
+	move_and_slide()

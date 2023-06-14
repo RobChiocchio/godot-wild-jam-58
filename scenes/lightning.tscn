@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://4bx68t6ch5ip"]
+
+[ext_resource type="Texture2D" uid="uid://be5uqk35p8jrw" path="res://assets/sprites/lightning.png" id="1_7xy3i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk2fj"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(200, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6cig"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(980, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5mko"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(1760, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gupd"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(2540, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvphu"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(3320, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c28o"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(4100, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhyrt"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(4880, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onpi6"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(5660, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfcvu"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(6440, 0, 780, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfehj"]
+atlas = ExtResource("1_7xy3i")
+region = Rect2(7220, 0, 780, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_baj8a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk2fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6cig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5mko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gupd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvphu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c28o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhyrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onpi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfcvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfehj")
+}],
+"loop": true,
+"name": &"strike",
+"speed": 10.0
+}]
+
+[node name="lightning" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_baj8a")
+animation = &"strike"
+frame_progress = 0.101256
+offset = Vector2(0, -175)

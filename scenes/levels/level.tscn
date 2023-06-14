@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://3kw0godr8tcv"]
 
-[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="1_ogrg0"]
+[ext_resource type="PackedScene" uid="uid://b3d70o2bi138d" path="res://scenes/background.tscn" id="1_ogrg0"]
 [ext_resource type="Script" path="res://scripts/blowable.gd" id="2_15fmy"]
 [ext_resource type="Texture2D" uid="uid://bnyyo6kj6ftfw" path="res://assets/objects/placeholder_crate.png" id="3_3yu43"]
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="4_xlqgp"]
