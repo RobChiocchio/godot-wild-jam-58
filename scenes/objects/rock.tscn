@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://biq8qan3m1fdy"]
 
-[ext_resource type="Script" path="res://scripts/blowable.gd" id="5_5ekg7"]
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_e8w7d"]
 [ext_resource type="Texture2D" uid="uid://b2gjxm157tsyy" path="res://assets/objects/rcok.png" id="6_28lj1"]
 
 [node name="Rock" type="RigidBody2D" groups=["rocks"]]
 center_of_mass_mode = 1
-script = ExtResource("5_5ekg7")
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_e8w7d")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-11.8, -9.2)

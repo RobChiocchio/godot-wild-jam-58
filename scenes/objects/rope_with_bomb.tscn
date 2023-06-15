@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cobehclyfwnjk"]
+
+[ext_resource type="Texture2D" uid="uid://cwawyr1123pjg" path="res://assets/objects/image.png" id="1_q8xbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xijvi"]
+size = Vector2(4, 87)
+
+[node name="rope" type="StaticBody2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 42.0
+offset_bottom = 164.0
+texture = ExtResource("1_q8xbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, 46.5)
+shape = SubResource("RectangleShape2D_xijvi")

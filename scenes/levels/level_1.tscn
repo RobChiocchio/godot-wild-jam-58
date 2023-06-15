@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://f78um2elq20g"]
+[gd_scene load_steps=11 format=3 uid="uid://f78um2elq20g"]
 
 [ext_resource type="PackedScene" uid="uid://b3d70o2bi138d" path="res://scenes/background.tscn" id="1_fwook"]
-[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/platform.tscn" id="2_p2slm"]
+[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/stone_platform.tscn" id="2_p2slm"]
 [ext_resource type="PhysicsMaterial" uid="uid://coo4gb40ef5be" path="res://scenes/platforms/platform_material.tres" id="3_evate"]
 [ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="4_l4oue"]
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="5_inpm2"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="6_pkb0a"]
 [ext_resource type="PackedScene" uid="uid://dx0qn1r8fb3xc" path="res://scenes/shrines/dragon_god.tscn" id="7_ec31i"]
-[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/statues/metal_statue.tscn" id="7_l5us2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2ma6"]
 friction = 0.8
@@ -30,9 +29,6 @@ follow_viewport_enabled = false
 [node name="platform" parent="Node" instance=ExtResource("2_p2slm")]
 position = Vector2(148, -54)
 physics_material_override = ExtResource("3_evate")
-
-[node name="Statue" parent="." instance=ExtResource("7_l5us2")]
-position = Vector2(174, -65)
 
 [node name="dragon_god" parent="." instance=ExtResource("7_ec31i")]
 position = Vector2(72, 0)

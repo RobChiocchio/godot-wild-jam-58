@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://8n1p2npsj0ep"]
+
+[ext_resource type="Texture2D" uid="uid://c2ax1hg2mlb0a" path="res://assets/objects/destroyshrine2.png" id="1_bug2a"]
+[ext_resource type="Texture2D" uid="uid://oflp3p1n4why" path="res://assets/sprites/chaarfullsheet.png" id="2_5uup2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th72g"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(0, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8cm7"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(250, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gn8f"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(500, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gejlp"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(750, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8n0t"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(1000, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlob1"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(1250, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8xnx"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(1500, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7c36"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(1750, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlqqb"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(2000, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sya10"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(2250, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtfbj"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(2500, 0, 250, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjwah"]
+atlas = ExtResource("2_5uup2")
+region = Rect2(2750, 0, 250, 318)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvtjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th72g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8cm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gn8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gejlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8n0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlob1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8xnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7c36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlqqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sya10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtfbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjwah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="chaar_shrine" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jvtjr")
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -12)
+texture = ExtResource("1_bug2a")
+
+[node name="intact_collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-66, 122, 68, 122, 68, 114, 64, 107, 64, 66, 68, 66, 68, 58, 56, 28, 44, 28, 44, 1, -43, 1, -43, 28, -54, 28, -66, 58, -66, 66, -62, 66, -62, 107, -66, 114)
+
+[node name="destroyed_collision" type="CollisionPolygon2D" parent="."]
+position = Vector2(4, -12)
+polygon = PackedVector2Array(-70, 134, 64, 134, 64, 126, 60, 119, 60, 78, 64, 78, 64, 69, 58, 55, 49, 61, 41, 64, 34, 68, 26, 69, 25, 72, 15, 72, -10, 72, -20, 61, -28, 60, -40, 57, -51, 54, -51, 43, -57, 40, -70, 69, -70, 78, -66, 78, -66, 119, -70, 126)
