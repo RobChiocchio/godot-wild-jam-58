@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 250.0
 const JUMP_VELOCITY = -300.0
 const AIR_DRAG = 100.0
+var fall_loop = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -35,9 +36,17 @@ func _physics_process(delta):
 	
 	#airborn character control
 	if not grounded:
-		#Input timer for double tap
 		velocity.y += gravity * delta
 		
+		if fall_loop == false:
+			_sprite.play("fall_begin")
+		else:
+			_sprite.play("falling")
+			
+		if _sprite.get_frame() > 6:
+			fall_loop = true
+			_sprite.play("falling")
+			
 		if direction:
 			if facing:
 				velocity.x = move_toward(velocity.x, direction*SPEED, SPEED/5)
@@ -48,6 +57,7 @@ func _physics_process(delta):
 
 	# Grounded character control
 	if grounded:
+		fall_loop = false
 		if direction:
 			velocity.x = direction * SPEED
 			_sprite.play("walk")
