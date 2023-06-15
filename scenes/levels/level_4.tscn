@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0dx3m1156ds7"]
+
+[ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="1_ukn0d"]
+[ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="2_7lpvt"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="3_k75fc"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="4_xr6v0"]
+[ext_resource type="PackedScene" uid="uid://cobehclyfwnjk" path="res://scenes/objects/rope_with_bomb.tscn" id="5_eoxlp"]
+[ext_resource type="PackedScene" uid="uid://ilngxnkqrxmu" path="res://scenes/statues/stone_statue.tscn" id="6_tfdfo"]
+[ext_resource type="PackedScene" uid="uid://8n1p2npsj0ep" path="res://scenes/shrines/chaar_shrine.tscn" id="7_027qx"]
+[ext_resource type="Script" path="res://scripts/chaar_shrine.gd" id="8_ojnb5"]
+[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/statues/metal_statue.tscn" id="9_yxk2d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_envay"]
+friction = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vilf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y06hk"]
+
+[node name="level_4" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_ukn0d")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_envay")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -91.0
+offset_right = 9000.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7lpvt")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_6vilf")
+shape = SubResource("WorldBoundaryShape2D_y06hk")
+
+[node name="Player" parent="." instance=ExtResource("3_k75fc")]
+position = Vector2(1, -11)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_speed = 20.0
+script = ExtResource("4_xr6v0")
+
+[node name="rope" parent="." instance=ExtResource("5_eoxlp")]
+position = Vector2(-42, -54)
+scale = Vector2(0.4, 0.4)
+
+[node name="stone_statue" parent="." instance=ExtResource("6_tfdfo")]
+position = Vector2(115, -5)
+scale = Vector2(0.5, 0.5)
+
+[node name="chaar_shrine" parent="." instance=ExtResource("7_027qx")]
+position = Vector2(36, -49)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("8_ojnb5")
+
+[node name="metal_statue" parent="." instance=ExtResource("9_yxk2d")]
+position = Vector2(130, 0)
+scale = Vector2(0.5, 0.5)

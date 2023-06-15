@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://f78um2elq20g"]
+[gd_scene load_steps=13 format=3 uid="uid://f78um2elq20g"]
 
-[ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/platform_medium.tscn" id="1_3cwky"]
-[ext_resource type="PackedScene" uid="uid://b3d70o2bi138d" path="res://scenes/background.tscn" id="1_fwook"]
-[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/platform.tscn" id="2_p2slm"]
-[ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/platform_small.tscn" id="3_y24xq"]
+[ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/stone_platform_medium.tscn" id="1_3cwky"]
+[ext_resource type="PackedScene" uid="uid://biq8qan3m1fdy" path="res://scenes/objects/rock.tscn" id="1_pgvue"]
+[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/stone_platform.tscn" id="2_p2slm"]
+[ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/stone_platform_small.tscn" id="3_y24xq"]
 [ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="4_l4oue"]
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="5_inpm2"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="6_pkb0a"]
 [ext_resource type="PackedScene" uid="uid://dx0qn1r8fb3xc" path="res://scenes/shrines/dragon_god.tscn" id="7_ec31i"]
+[ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="8_i64i2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2ma6"]
 friction = 0.8
@@ -18,22 +19,36 @@ friction = 0.8
 
 [node name="level_3" type="Node2D"]
 
-[node name="Node" type="Node" parent="."]
+[node name="rocks" type="Node" parent="."]
 
-[node name="medium_platform" parent="Node" instance=ExtResource("1_3cwky")]
+[node name="rock_left" parent="rocks" instance=ExtResource("1_pgvue")]
+position = Vector2(-38, -137)
+
+[node name="rock_right" parent="rocks" instance=ExtResource("1_pgvue")]
+position = Vector2(170, -142)
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="medium_platform" parent="platforms" instance=ExtResource("1_3cwky")]
 position = Vector2(-132, -131)
 
-[node name="platform" parent="Node" instance=ExtResource("2_p2slm")]
+[node name="platform" parent="platforms" instance=ExtResource("2_p2slm")]
 position = Vector2(-40, -98)
 
-[node name="small_platform" parent="Node" instance=ExtResource("3_y24xq")]
-position = Vector2(76, -128)
+[node name="small_platform" parent="platforms" instance=ExtResource("3_y24xq")]
+position = Vector2(107, -152)
 
-[node name="platform2" parent="Node" instance=ExtResource("2_p2slm")]
+[node name="platform2" parent="platforms" instance=ExtResource("2_p2slm")]
 position = Vector2(155, -136)
 
-[node name="platform3" parent="Node" instance=ExtResource("2_p2slm")]
-position = Vector2(170, -48)
+[node name="platform3" parent="platforms" instance=ExtResource("2_p2slm")]
+position = Vector2(170, -40)
+
+[node name="medium_platform2" parent="platforms" instance=ExtResource("1_3cwky")]
+position = Vector2(-132, -131)
+
+[node name="platform4" parent="platforms" instance=ExtResource("2_p2slm")]
+position = Vector2(117, -93)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_q2ma6")
@@ -58,7 +73,7 @@ material = SubResource("ShaderMaterial_nyj1h")
 shape = SubResource("WorldBoundaryShape2D_plqi7")
 
 [node name="Player" parent="." instance=ExtResource("5_inpm2")]
-position = Vector2(1, -11)
+position = Vector2(-29, -28)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
@@ -70,8 +85,6 @@ script = ExtResource("6_pkb0a")
 position = Vector2(72, 0)
 scale = Vector2(0.4, 0.4)
 
-[node name="Background" parent="." instance=ExtResource("1_fwook")]
-offset = Vector2(640, 100)
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_i64i2")]
 scale = Vector2(0.4, 0.4)
-transform = Transform2D(0.4, 0, 0, 0.4, 640, 100)
-follow_viewport_enabled = false
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
