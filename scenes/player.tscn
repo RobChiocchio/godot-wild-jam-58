@@ -1,10 +1,67 @@
-[gd_scene load_steps=24 format=3 uid="uid://xcfais7p0tc6"]
+[gd_scene load_steps=39 format=3 uid="uid://xcfais7p0tc6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_y1nol"]
+[ext_resource type="Texture2D" uid="uid://bsm3napjv25jn" path="res://assets/sprites/fallingsprites.png" id="2_w7y3a"]
 [ext_resource type="Texture2D" uid="uid://cs6fuho6qckda" path="res://assets/sprites/character_walk.png" id="2_xhp6v"]
 [ext_resource type="Script" path="res://scripts/wind.gd" id="3_wu53x"]
 [ext_resource type="Texture2D" uid="uid://c1je2b1gtdrhf" path="res://assets/effects/wind.png" id="5_5mdh4"]
 [ext_resource type="Texture2D" uid="uid://dejqg6bdm7ofr" path="res://assets/effects/suk.png" id="5_ajypt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ymld"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbe7m"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpruh"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o23ys"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxg13"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llfmj"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_106cx"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjf82"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuvx2"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmmvx"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2xvp"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aswo"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x3ho"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hpvr"]
+atlas = ExtResource("2_w7y3a")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uslsm"]
 atlas = ExtResource("2_xhp6v")
@@ -44,6 +101,58 @@ region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jtop4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ymld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbe7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpruh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o23ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxg13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llfmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_106cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjf82")
+}],
+"loop": false,
+"name": &"fall_begin",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuvx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmmvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2xvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aswo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x3ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hpvr")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uslsm")
@@ -151,9 +260,7 @@ script = ExtResource("1_y1nol")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_jtop4")
-animation = &"walk"
-frame = 6
-frame_progress = 0.389013
+animation = &"fall_begin"
 
 [node name="collision_right" type="CollisionPolygon2D" parent="."]
 position = Vector2(-1, 0)
