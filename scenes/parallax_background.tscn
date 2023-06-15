@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://pdmvmjpnuuew"]
+
+[ext_resource type="Texture2D" uid="uid://cvvqles6wrkym" path="res://assets/effects/mountainbackground.png" id="1_uob47"]
+[ext_resource type="Texture2D" uid="uid://chl20jmii2fe8" path="res://assets/effects/rain.png" id="2_22bof"]
+[ext_resource type="Texture2D" uid="uid://sshjl6qdcywl" path="res://assets/effects/overcloud.png" id="3_txxpr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vrt2"]
+atlas = ExtResource("3_txxpr")
+region = Rect2(0, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkkun"]
+atlas = ExtResource("3_txxpr")
+region = Rect2(800, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqpis"]
+atlas = ExtResource("3_txxpr")
+region = Rect2(1600, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbxul"]
+atlas = ExtResource("3_txxpr")
+region = Rect2(2400, 0, 800, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylpy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vrt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkkun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqpis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbxul")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aujws"]
+atlas = ExtResource("2_22bof")
+region = Rect2(0, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bl1n"]
+atlas = ExtResource("2_22bof")
+region = Rect2(800, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp21j"]
+atlas = ExtResource("2_22bof")
+region = Rect2(1600, 0, 800, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1txx4"]
+atlas = ExtResource("2_22bof")
+region = Rect2(2400, 0, 800, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldk5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aujws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bl1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp21j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1txx4")
+}],
+"loop": true,
+"name": &"raining",
+"speed": 10.0
+}]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="mountains" type="ParallaxLayer" parent="."]
+position = Vector2(-793, -181)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="mountain" type="Sprite2D" parent="mountains"]
+position = Vector2(393, 256)
+texture = ExtResource("1_uob47")
+
+[node name="mountain2" type="Sprite2D" parent="mountains"]
+position = Vector2(1193, 257)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_uob47")
+
+[node name="overclouds" type="ParallaxLayer" parent="."]
+position = Vector2(0, 36)
+motion_scale = Vector2(0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overclouds"]
+position = Vector2(400, 39)
+sprite_frames = SubResource("SpriteFrames_ylpy8")
+autoplay = "default"
+frame_progress = 0.0969022
+
+[node name="rains" type="ParallaxLayer" parent="."]
+position = Vector2(0, 36)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="rain" type="AnimatedSprite2D" parent="rains"]
+position = Vector2(-400, 39)
+sprite_frames = SubResource("SpriteFrames_ldk5j")
+animation = &"raining"
+autoplay = "raining"
+frame = 2
+frame_progress = 0.36154
+
+[node name="rain2" type="AnimatedSprite2D" parent="rains"]
+position = Vector2(400, 39)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_ldk5j")
+animation = &"raining"
+autoplay = "raining"
+frame = 2
+frame_progress = 0.36154

@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://biq8qan3m1fdy" path="res://scenes/rock.tscn" id="1_ejdjx"]
 [ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/platform.tscn" id="2_8ts8j"]
 [ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/platform_small.tscn" id="3_kxri4"]
-[ext_resource type="PackedScene" uid="uid://b3d70o2bi138d" path="res://scenes/background.tscn" id="4_ol6g0"]
 [ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="5_fado8"]
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="6_ubur7"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="7_364t1"]
 [ext_resource type="PackedScene" uid="uid://qi66qds5jsgi" path="res://scenes/shrines/tefnut_shrine.tscn" id="8_kcbvk"]
 [ext_resource type="Script" path="res://scripts/tefnut_shrine.gd" id="9_rpr0d"]
+[ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="10_ytv3k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ynxur"]
 friction = 0.8
@@ -53,12 +53,6 @@ position = Vector2(174, -47)
 [node name="platform4" parent="Node" instance=ExtResource("2_8ts8j")]
 position = Vector2(-102, -129)
 
-[node name="Background" parent="." instance=ExtResource("4_ol6g0")]
-offset = Vector2(640, 100)
-scale = Vector2(0.4, 0.4)
-transform = Transform2D(0.4, 0, 0, 0.4, 640, 100)
-follow_viewport_enabled = false
-
 [node name="Ground" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_ynxur")
 
@@ -94,5 +88,9 @@ position = Vector2(0, -66)
 zoom = Vector2(4, 4)
 position_smoothing_speed = 20.0
 script = ExtResource("7_364t1")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("10_ytv3k")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 
 [connection signal="body_entered" from="rocks/left_rock" to="tefnut_shrine" method="_on_left_rock_body_entered"]
