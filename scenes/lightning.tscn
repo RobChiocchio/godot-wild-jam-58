@@ -75,14 +75,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lfehj")
 }],
-"loop": true,
+"loop": false,
 "name": &"strike",
 "speed": 10.0
 }]
 
 [node name="lightning" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="lightning_strike" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_baj8a")
 animation = &"strike"
 frame_progress = 0.101256

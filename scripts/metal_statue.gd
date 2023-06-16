@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends "res://scripts/blowable.gd"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,11 +9,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-
-func succ(force) -> void:
-	self.apply_central_force(force)
-	
-
-
-func _on_body_entered(body):
-	pass # Replace with function body.

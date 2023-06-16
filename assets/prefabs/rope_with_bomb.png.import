@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv6s3k7f7r8c2"
-path="res://.godot/imported/rope_with_bauble.png-f88c7936b92ecff8ff5cbe618860ad3d.ctex"
+path="res://.godot/imported/rope_with_bomb.png-1287b5c1845aa4cd762247ba59baa4f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/prefabs/rope_with_bauble.png"
-dest_files=["res://.godot/imported/rope_with_bauble.png-f88c7936b92ecff8ff5cbe618860ad3d.ctex"]
+source_file="res://assets/prefabs/rope_with_bomb.png"
+dest_files=["res://.godot/imported/rope_with_bomb.png-1287b5c1845aa4cd762247ba59baa4f6.ctex"]
 
 [params]
 

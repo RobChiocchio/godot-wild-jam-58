@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cobehclyfwnjk"]
+[gd_scene load_steps=4 format=3 uid="uid://cobehclyfwnjk"]
 
 [ext_resource type="Texture2D" uid="uid://cwawyr1123pjg" path="res://assets/objects/image.png" id="1_q8xbf"]
+[ext_resource type="Texture2D" uid="uid://ujke03odd8lh" path="res://assets/prefabs/rope.png" id="2_y6nme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xijvi"]
 size = Vector2(4, 87)
 
 [node name="rope" type="StaticBody2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="rope_with_bomb" type="TextureRect" parent="."]
 offset_right = 42.0
 offset_bottom = 164.0
 texture = ExtResource("1_q8xbf")
+
+[node name="rope_without_bomb" type="TextureRect" parent="."]
+offset_left = 7.0
+offset_right = 47.0
+offset_bottom = 96.0
+texture = ExtResource("2_y6nme")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(21, 46.5)

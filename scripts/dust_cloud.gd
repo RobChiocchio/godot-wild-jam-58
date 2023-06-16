@@ -9,7 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if is_on_floor() and was_airborn == true:
-		
-	else:
-		was_airborn = true
+#	if is_on_floor() and was_airborn == true:
+#		was_airborn = false
+#	else:
+#		was_airborn = true
+	pass

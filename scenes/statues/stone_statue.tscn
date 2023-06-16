@@ -3,21 +3,22 @@
 [ext_resource type="Script" path="res://scripts/stone_statue.gd" id="1_4jcw5"]
 [ext_resource type="Texture2D" uid="uid://bwvpy8tpjqnjb" path="res://assets/objects/betastatue_stone.png" id="2_oujsr"]
 
-[node name="stone_statue" type="Node2D"]
-
-[node name="statue_body" type="RigidBody2D" parent="."]
-mass = 1.25
+[node name="statue_body" type="RigidBody2D"]
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, -3)
 max_contacts_reported = 5
-contact_monitor = true
 script = ExtResource("1_4jcw5")
 
-[node name="TextureRect" type="TextureRect" parent="statue_body"]
-offset_left = -22.0
-offset_top = -62.0
-offset_right = 18.0
-offset_bottom = 10.0
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -9.08
+offset_top = -30.2
+offset_right = 30.92
+offset_bottom = 41.8
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_oujsr")
 metadata/_edit_use_anchors_ = true
 
-[node name="body" type="CollisionPolygon2D" parent="statue_body"]
-polygon = PackedVector2Array(-13, 10, 13, 10, 13, -3, 11, -3, 11, -39, 6, -39, 6, -46, -6, -46, -6, -39, -13, -39, -13, -33, -18, -33, -18, -4, -13, -4)
+[node name="body" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.0799991, -5.2)
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(-13, 10, 13, 10, 13, -3, 11, -3, 11, -39, 6, -39, 6, -46, -6, -46, -6, -39, -11, -39, -11, -55, -18, -55, -18, -33, -18, -4, -13, -4)
