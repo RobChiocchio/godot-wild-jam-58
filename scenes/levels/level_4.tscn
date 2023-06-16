@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0dx3m1156ds7"]
+[gd_scene load_steps=18 format=3 uid="uid://b0dx3m1156ds7"]
 
+[ext_resource type="Script" path="res://scripts/chaar_shrine_control.gd" id="1_2hcx3"]
+[ext_resource type="Script" path="res://scripts/rope_and_bomb.gd" id="1_ktnad"]
 [ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="1_ukn0d"]
 [ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="2_7lpvt"]
+[ext_resource type="PackedScene" uid="uid://cf36fq14upwfo" path="res://scenes/objects/bomb.tscn" id="3_7ikww"]
+[ext_resource type="PackedScene" uid="uid://4bx68t6ch5ip" path="res://scenes/lightning.tscn" id="3_amcpx"]
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="3_k75fc"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="4_xr6v0"]
 [ext_resource type="PackedScene" uid="uid://cobehclyfwnjk" path="res://scenes/objects/rope_with_bomb.tscn" id="5_eoxlp"]
@@ -9,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://8n1p2npsj0ep" path="res://scenes/shrines/chaar_shrine.tscn" id="7_027qx"]
 [ext_resource type="Script" path="res://scripts/chaar_shrine.gd" id="8_ojnb5"]
 [ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/statues/metal_statue.tscn" id="9_yxk2d"]
+[ext_resource type="PackedScene" uid="uid://cdq5vfshq8qwu" path="res://scenes/platforms/mossy_platform_small.tscn" id="10_0kjlg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_envay"]
 friction = 0.8
@@ -18,6 +23,49 @@ friction = 0.8
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y06hk"]
 
 [node name="level_4" type="Node2D"]
+
+[node name="stone_statue" parent="." instance=ExtResource("6_tfdfo")]
+position = Vector2(-66, -123)
+collision_layer = 3
+center_of_mass = Vector2(0, 3)
+contact_monitor = true
+
+[node name="chaar_shrine_control" type="Node" parent="."]
+script = ExtResource("1_2hcx3")
+
+[node name="chaar_shrine" parent="chaar_shrine_control" instance=ExtResource("7_027qx")]
+light_mask = 2
+z_index = -4
+z_as_relative = false
+position = Vector2(47, -49)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+script = ExtResource("8_ojnb5")
+
+[node name="lightning" parent="chaar_shrine_control" instance=ExtResource("3_amcpx")]
+position = Vector2(47, -49)
+scale = Vector2(0.4, 0.4)
+
+[node name="rope_and_bomb" type="Node" parent="."]
+script = ExtResource("1_ktnad")
+
+[node name="rope" parent="rope_and_bomb" instance=ExtResource("5_eoxlp")]
+position = Vector2(-93, -58)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+
+[node name="bomb" parent="rope_and_bomb" instance=ExtResource("3_7ikww")]
+position = Vector2(-85, -11)
+collision_layer = 3
+
+[node name="metal_statue" parent="." instance=ExtResource("9_yxk2d")]
+position = Vector2(-36, -124)
+center_of_mass = Vector2(0, 3)
+max_contacts_reported = 5
+contact_monitor = true
+
+[node name="Player" parent="." instance=ExtResource("3_k75fc")]
+position = Vector2(-82, -3)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_ukn0d")]
 scale = Vector2(0.4, 0.4)
@@ -45,28 +93,29 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_6vilf")
 shape = SubResource("WorldBoundaryShape2D_y06hk")
 
-[node name="Player" parent="." instance=ExtResource("3_k75fc")]
-position = Vector2(1, -11)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -66)
 zoom = Vector2(4, 4)
 position_smoothing_speed = 20.0
 script = ExtResource("4_xr6v0")
 
-[node name="rope" parent="." instance=ExtResource("5_eoxlp")]
-position = Vector2(-42, -54)
+[node name="platforms" type="Node" parent="."]
+
+[node name="mossy_platform_small" parent="platforms" instance=ExtResource("10_0kjlg")]
+position = Vector2(-97, -67)
 scale = Vector2(0.4, 0.4)
 
-[node name="stone_statue" parent="." instance=ExtResource("6_tfdfo")]
-position = Vector2(115, -5)
-scale = Vector2(0.5, 0.5)
-
-[node name="chaar_shrine" parent="." instance=ExtResource("7_027qx")]
-position = Vector2(36, -49)
+[node name="mossy_platform_small2" parent="platforms" instance=ExtResource("10_0kjlg")]
+position = Vector2(-52, -111)
 scale = Vector2(0.4, 0.4)
-script = ExtResource("8_ojnb5")
 
-[node name="metal_statue" parent="." instance=ExtResource("9_yxk2d")]
-position = Vector2(130, 0)
-scale = Vector2(0.5, 0.5)
+[node name="mossy_platform_small3" parent="platforms" instance=ExtResource("10_0kjlg")]
+position = Vector2(-23, -49)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="body_entered" from="stone_statue" to="rope_and_bomb" method="_on_stone_statue_body_entered"]
+[connection signal="property_list_changed" from="chaar_shrine_control/chaar_shrine" to="rope_and_bomb/bomb" method="_on_chaar_shrine_property_list_changed"]
+[connection signal="body_entered" from="rope_and_bomb/bomb" to="chaar_shrine_control/chaar_shrine" method="_on_bomb_body_entered"]
+[connection signal="body_exited" from="rope_and_bomb/bomb" to="chaar_shrine_control/chaar_shrine" method="_on_bomb_body_exited"]
+[connection signal="body_entered" from="metal_statue" to="chaar_shrine_control" method="_on_metal_statue_body_entered"]
+[connection signal="body_exited" from="metal_statue" to="chaar_shrine_control" method="_on_metal_statue_body_exited"]

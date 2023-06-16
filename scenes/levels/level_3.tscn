@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://f78um2elq20g"]
+[gd_scene load_steps=12 format=3 uid="uid://f78um2elq20g"]
 
-[ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/stone_platform_medium.tscn" id="1_3cwky"]
-[ext_resource type="PackedScene" uid="uid://biq8qan3m1fdy" path="res://scenes/objects/rock.tscn" id="1_pgvue"]
-[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/stone_platform.tscn" id="2_p2slm"]
-[ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/stone_platform_small.tscn" id="3_y24xq"]
+[ext_resource type="PackedScene" uid="uid://ilngxnkqrxmu" path="res://scenes/statues/stone_statue.tscn" id="1_pdem2"]
+[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/statues/metal_statue.tscn" id="2_1eq4q"]
+[ext_resource type="PackedScene" uid="uid://dpgleddsiek8s" path="res://scenes/platforms/wooden_platform_small.tscn" id="3_0bft8"]
 [ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="4_l4oue"]
 [ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="5_inpm2"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="6_pkb0a"]
@@ -19,36 +18,27 @@ friction = 0.8
 
 [node name="level_3" type="Node2D"]
 
-[node name="rocks" type="Node" parent="."]
+[node name="statues" type="Node" parent="."]
 
-[node name="rock_left" parent="rocks" instance=ExtResource("1_pgvue")]
-position = Vector2(-38, -137)
+[node name="statue_body" parent="statues" instance=ExtResource("1_pdem2")]
 
-[node name="rock_right" parent="rocks" instance=ExtResource("1_pgvue")]
-position = Vector2(170, -142)
+[node name="statue_body2" parent="statues" instance=ExtResource("1_pdem2")]
+position = Vector2(203, -72)
+
+[node name="statue_body3" parent="statues" instance=ExtResource("1_pdem2")]
+position = Vector2(176, -72)
+
+[node name="metal_statue" parent="statues" instance=ExtResource("2_1eq4q")]
+position = Vector2(169, 0)
+
+[node name="metal_statue2" parent="statues" instance=ExtResource("2_1eq4q")]
+position = Vector2(133, 0)
 
 [node name="platforms" type="Node" parent="."]
 
-[node name="medium_platform" parent="platforms" instance=ExtResource("1_3cwky")]
-position = Vector2(-132, -131)
-
-[node name="platform" parent="platforms" instance=ExtResource("2_p2slm")]
-position = Vector2(-40, -98)
-
-[node name="small_platform" parent="platforms" instance=ExtResource("3_y24xq")]
-position = Vector2(107, -152)
-
-[node name="platform2" parent="platforms" instance=ExtResource("2_p2slm")]
-position = Vector2(155, -136)
-
-[node name="platform3" parent="platforms" instance=ExtResource("2_p2slm")]
-position = Vector2(170, -40)
-
-[node name="medium_platform2" parent="platforms" instance=ExtResource("1_3cwky")]
-position = Vector2(-132, -131)
-
-[node name="platform4" parent="platforms" instance=ExtResource("2_p2slm")]
-position = Vector2(117, -93)
+[node name="wooden_platform_small" parent="platforms" instance=ExtResource("3_0bft8")]
+position = Vector2(164, -72)
+scale = Vector2(0.4, 0.4)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_q2ma6")

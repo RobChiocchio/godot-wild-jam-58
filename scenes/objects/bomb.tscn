@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf36fq14upwfo"]
+
+[ext_resource type="Texture2D" uid="uid://b05dkup8yatyd" path="res://assets/objects/explostive.png" id="1_4jb55"]
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_ubf7a"]
+
+[node name="bomb" type="RigidBody2D"]
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_ubf7a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -8.0
+offset_top = -26.0
+offset_right = 32.0
+offset_bottom = 46.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_4jb55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(4, 0, 15, -7, 16, -13, 15, -19, 8, -25, 4, -26, -4, -26, -8, -25, -15, -19, -16, -13, -15, -7, -4, 0)

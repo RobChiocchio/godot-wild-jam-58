@@ -3,25 +3,29 @@
 [ext_resource type="Texture2D" uid="uid://dcmdogsaiit5c" path="res://assets/objects/betastatuemetal.png" id="1_g5hs6"]
 [ext_resource type="Script" path="res://scripts/metal_statue.gd" id="1_qrt6b"]
 
-[node name="metal_statue" type="Node2D"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-mass = 1.25
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(-1, -1)
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, -3)
 script = ExtResource("1_qrt6b")
 
-[node name="TextureRect" type="TextureRect" parent="RigidBody2D"]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -72.0
-offset_right = 38.0
+offset_left = -7.6
+offset_top = -28.88
+offset_right = 32.4
+offset_bottom = 43.12
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_g5hs6")
+metadata/_edit_use_anchors_ = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
-position = Vector2(20, -10)
-polygon = PackedVector2Array(-14, 10, 13, 10, 13, -3, 12, -3, 12, -46, -11, -46, -11, -55, -18, -55, -18, -4, -14, -4)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, -4)
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(-14, 10, 13, 10, 13, -3, 12, -3, 12, -38.995, 6, -39, 5.9918, -46, -7, -46, -7, -39, -11, -39, -17, -39, -17, -4, -14, -4)

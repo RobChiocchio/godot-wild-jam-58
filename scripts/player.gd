@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 250.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -350.0
 const AIR_DRAG = 100.0
 var fall_loop = false
 
@@ -10,7 +10,6 @@ var fall_loop = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var _sprite = $AnimatedSprite2D
-@onready var _player = self
 
 @onready var left_box = $collision_left
 @onready var right_box = $collision_right

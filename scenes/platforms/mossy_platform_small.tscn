@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdq5vfshq8qwu"]
+
+[ext_resource type="Texture2D" uid="uid://do4ogbg8eyueb" path="res://assets/prefabs/mesoplatform.png" id="1_uyss5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arofm"]
+size = Vector2(107, 47)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -55.0
+offset_top = -25.0
+offset_right = 56.0
+offset_bottom = 25.0
+texture = ExtResource("1_uyss5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_arofm")
