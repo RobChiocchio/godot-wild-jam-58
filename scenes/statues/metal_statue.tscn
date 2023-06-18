@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmdogsaiit5c" path="res://assets/objects/betastatuemetal.png" id="1_g5hs6"]
 [ext_resource type="Script" path="res://scripts/metal_statue.gd" id="1_qrt6b"]
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="metal_statue" type="RigidBody2D"]
 position = Vector2(-1, -1)
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, -3)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/stone_statue.gd" id="1_4jcw5"]
 [ext_resource type="Texture2D" uid="uid://bwvpy8tpjqnjb" path="res://assets/objects/betastatue_stone.png" id="2_oujsr"]
 
-[node name="statue_body" type="RigidBody2D"]
+[node name="stone_statue" type="RigidBody2D"]
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, -3)
 max_contacts_reported = 5

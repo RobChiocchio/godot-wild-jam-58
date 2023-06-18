@@ -9,7 +9,6 @@ extends StaticBody2D
 var _bomb_overlap = false
 var _exploded = false
 var _strike = false
-var _destroyed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +20,7 @@ func _change_colliders():
 	_chaar.remove_child(intact_collider)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if _strike == true and _exploded == false and _bomb_overlap == true:
 		call_deferred("_change_colliders")
 		_texture.visible = true

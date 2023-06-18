@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c0upw48q42o7r"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/cthulufinal.png" id="1_yx1pb"]
+[ext_resource type="Texture2D" uid="uid://btd0lid1d8wcj" path="res://assets/sprites/cthulufinal.png" id="1_yx1pb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqy0y"]
 atlas = ExtResource("1_yx1pb")
@@ -91,15 +91,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
-[node name="Node2D" type="StaticBody2D"]
+[node name="cthulhu_shrine" type="StaticBody2D" groups=["shrine"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_bon6o")
-frame_progress = 0.619997
+autoplay = "default"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(0.25, 0.25)

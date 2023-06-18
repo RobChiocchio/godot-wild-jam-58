@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -350.0
 const AIR_DRAG = 100.0
 var fall_loop = false
 
+var next_available = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -14,8 +16,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var left_box = $collision_left
 @onready var right_box = $collision_right
 
-func _process(delta):
-	pass
+func _process(_delta):
+	if next_available:
+		if Input.is_action_pressed("next_level"):
+			notify_property_list_changed()
 
 func _physics_process(delta):
 
@@ -82,6 +86,22 @@ func _physics_process(delta):
 		# Handle Jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
-			_sprite.stop()
+			_sprite.play("jump")
 	
 	move_and_slide()
+
+
+func _on_chaar_shrine_property_list_changed():
+	next_available = true
+
+
+func _on_cthulhu_shrine_property_list_changed():
+	next_available = true
+
+
+func _on_tefnut_shrine_property_list_changed():
+	next_available = true
+
+
+func _on_dragon_god_property_list_changed():
+	next_available = true

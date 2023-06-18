@@ -1,0 +1,127 @@
+[gd_scene load_steps=20 format=3 uid="uid://f78um2elq20g"]
+
+[ext_resource type="PackedScene" uid="uid://4bx68t6ch5ip" path="res://scenes/lightning.tscn" id="1_fvuid"]
+[ext_resource type="Script" path="res://scripts/level_dragon.gd" id="1_goscu"]
+[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/statues/metal_statue.tscn" id="1_gyg4t"]
+[ext_resource type="PackedScene" uid="uid://ilngxnkqrxmu" path="res://scenes/statues/stone_statue.tscn" id="2_00ti5"]
+[ext_resource type="Script" path="res://scripts/lightning.gd" id="2_kphm6"]
+[ext_resource type="PackedScene" uid="uid://dpgleddsiek8s" path="res://scenes/platforms/wooden_platform_small.tscn" id="3_cegnk"]
+[ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="4_f0c3x"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="5_ms33y"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="6_w0wh2"]
+[ext_resource type="PackedScene" uid="uid://dx0qn1r8fb3xc" path="res://scenes/shrines/dragon_god.tscn" id="7_lhj3k"]
+[ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="8_7ltux"]
+[ext_resource type="Script" path="res://scripts/dragon_god.gd" id="8_34aip"]
+[ext_resource type="AudioStream" uid="uid://dvlffrrjwi5y5" path="res://assets/music/Eastern.wav" id="10_qjyh7"]
+[ext_resource type="AudioStream" uid="uid://do0rt46rhhcu" path="res://assets/sfx/thunder.wav" id="14_plsrt"]
+[ext_resource type="Script" path="res://scripts/lightning_sfx.gd" id="14_wh6yy"]
+[ext_resource type="Texture2D" uid="uid://bbmsb0lqf0lsf" path="res://assets/ui/start.png" id="16_2n8il"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2ma6"]
+friction = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyj1h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_plqi7"]
+
+[node name="level_dragon" type="Node2D"]
+script = ExtResource("1_goscu")
+
+[node name="lightning" parent="." instance=ExtResource("1_fvuid")]
+position = Vector2(34, -1.00002)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("2_kphm6")
+
+[node name="next_indicator" type="TextureRect" parent="lightning"]
+offset_left = 62.5
+offset_top = -127.5
+offset_right = 83.5
+offset_bottom = -109.5
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("16_2n8il")
+expand_mode = 1
+
+[node name="statues" type="Node" parent="."]
+
+[node name="metal_statue" parent="statues" instance=ExtResource("1_gyg4t")]
+position = Vector2(112, -42)
+max_contacts_reported = 5
+contact_monitor = true
+
+[node name="stone_statue" parent="statues" instance=ExtResource("2_00ti5")]
+position = Vector2(61, -120)
+contact_monitor = true
+
+[node name="stone_statue2" parent="statues" instance=ExtResource("2_00ti5")]
+position = Vector2(79, -120)
+contact_monitor = true
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="wooden_platform_small" parent="platforms" instance=ExtResource("3_cegnk")]
+position = Vector2(48, -121)
+scale = Vector2(0.4, 0.4)
+
+[node name="wooden_platform_small2" parent="platforms" instance=ExtResource("3_cegnk")]
+position = Vector2(153, -91)
+scale = Vector2(0.4, 0.4)
+
+[node name="wooden_platform_small3" parent="platforms" instance=ExtResource("3_cegnk")]
+position = Vector2(87, -42)
+scale = Vector2(0.4, 0.4)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_q2ma6")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -91.0
+offset_right = 9000.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_f0c3x")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_nyj1h")
+shape = SubResource("WorldBoundaryShape2D_plqi7")
+
+[node name="Player" parent="." instance=ExtResource("5_ms33y")]
+position = Vector2(-29, -28)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_speed = 20.0
+script = ExtResource("6_w0wh2")
+
+[node name="dragon_god" parent="." instance=ExtResource("7_lhj3k")]
+z_index = -9
+position = Vector2(34, 0)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+script = ExtResource("8_34aip")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_7ltux")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qjyh7")
+autoplay = true
+
+[node name="lightning_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_plsrt")
+script = ExtResource("14_wh6yy")
+
+[connection signal="body_entered" from="statues/metal_statue" to="lightning" method="_on_metal_statue_body_entered"]
+[connection signal="body_entered" from="statues/metal_statue" to="dragon_god" method="_on_metal_statue_body_entered"]
+[connection signal="property_list_changed" from="Player" to="." method="_on_player_property_list_changed"]
+[connection signal="property_list_changed" from="dragon_god" to="Player" method="_on_dragon_god_property_list_changed"]
+[connection signal="property_list_changed" from="dragon_god" to="lightning_sfx" method="_on_dragon_god_property_list_changed"]

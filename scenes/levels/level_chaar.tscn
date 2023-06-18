@@ -1,0 +1,148 @@
+[gd_scene load_steps=23 format=3 uid="uid://dmt0301rp8f3"]
+
+[ext_resource type="Script" path="res://scripts/level_chaar.gd" id="1_2neu4"]
+[ext_resource type="PackedScene" uid="uid://ilngxnkqrxmu" path="res://scenes/statues/stone_statue.tscn" id="1_bncar"]
+[ext_resource type="Script" path="res://scripts/chaar_shrine_control.gd" id="2_bye2y"]
+[ext_resource type="PackedScene" uid="uid://8n1p2npsj0ep" path="res://scenes/shrines/chaar_shrine.tscn" id="3_jgw5w"]
+[ext_resource type="Script" path="res://scripts/chaar_shrine.gd" id="4_e4rfm"]
+[ext_resource type="PackedScene" uid="uid://4bx68t6ch5ip" path="res://scenes/lightning.tscn" id="5_kfaeb"]
+[ext_resource type="Script" path="res://scripts/rope_and_bomb.gd" id="6_dxe27"]
+[ext_resource type="Texture2D" uid="uid://bbmsb0lqf0lsf" path="res://assets/ui/start.png" id="7_iexlf"]
+[ext_resource type="PackedScene" uid="uid://cobehclyfwnjk" path="res://scenes/objects/rope_with_bomb.tscn" id="7_usj7p"]
+[ext_resource type="PackedScene" uid="uid://cf36fq14upwfo" path="res://scenes/objects/bomb.tscn" id="8_xr6px"]
+[ext_resource type="PackedScene" uid="uid://dguud3s11hn3b" path="res://scenes/statues/metal_statue.tscn" id="9_pa4g6"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="10_aftrx"]
+[ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="11_0pvor"]
+[ext_resource type="Texture2D" uid="uid://xjblk1unfpjn" path="res://assets/ground/ground.png" id="12_wab12"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="13_7yadb"]
+[ext_resource type="PackedScene" uid="uid://cdq5vfshq8qwu" path="res://scenes/platforms/mossy_platform_small.tscn" id="14_3arw3"]
+[ext_resource type="AudioStream" uid="uid://bwill8j3iwnwn" path="res://assets/music/Meso.wav" id="15_7ah0e"]
+[ext_resource type="AudioStream" uid="uid://do0rt46rhhcu" path="res://assets/sfx/thunder.wav" id="18_3qdiy"]
+[ext_resource type="Script" path="res://scripts/lightning_sfx.gd" id="19_ux6wx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_envay"]
+friction = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vilf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y06hk"]
+
+[node name="level_chaar" type="Node2D"]
+script = ExtResource("1_2neu4")
+
+[node name="stone_statue" parent="." instance=ExtResource("1_bncar")]
+position = Vector2(-66, -123)
+collision_layer = 3
+center_of_mass = Vector2(0, 3)
+contact_monitor = true
+
+[node name="chaar_shrine_control" type="Node" parent="."]
+script = ExtResource("2_bye2y")
+
+[node name="chaar_shrine" parent="chaar_shrine_control" instance=ExtResource("3_jgw5w")]
+light_mask = 2
+z_index = -4
+z_as_relative = false
+position = Vector2(47, -49)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+script = ExtResource("4_e4rfm")
+
+[node name="lightning" parent="chaar_shrine_control" instance=ExtResource("5_kfaeb")]
+position = Vector2(47, -2)
+scale = Vector2(0.4, 0.4)
+
+[node name="next_indicator" type="TextureRect" parent="chaar_shrine_control"]
+offset_left = 65.0
+offset_top = -64.0
+offset_right = 86.0
+offset_bottom = -46.0
+texture = ExtResource("7_iexlf")
+expand_mode = 1
+
+[node name="rope_and_bomb" type="Node" parent="."]
+script = ExtResource("6_dxe27")
+
+[node name="rope" parent="rope_and_bomb" instance=ExtResource("7_usj7p")]
+position = Vector2(-93, -58)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+
+[node name="bomb" parent="rope_and_bomb" instance=ExtResource("8_xr6px")]
+position = Vector2(-85, -11)
+collision_layer = 3
+
+[node name="metal_statue" parent="." instance=ExtResource("9_pa4g6")]
+position = Vector2(-36, -124)
+center_of_mass = Vector2(0, 3)
+max_contacts_reported = 5
+contact_monitor = true
+
+[node name="Player" parent="." instance=ExtResource("10_aftrx")]
+position = Vector2(-82, -3)
+collision_layer = 3
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("11_0pvor")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_envay")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -91.0
+offset_right = 9000.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_wab12")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_6vilf")
+shape = SubResource("WorldBoundaryShape2D_y06hk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_speed = 20.0
+script = ExtResource("13_7yadb")
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="mossy_platform_small" parent="platforms" instance=ExtResource("14_3arw3")]
+position = Vector2(-97, -67)
+scale = Vector2(0.4, 0.4)
+
+[node name="mossy_platform_small2" parent="platforms" instance=ExtResource("14_3arw3")]
+position = Vector2(-52, -111)
+scale = Vector2(0.4, 0.4)
+
+[node name="mossy_platform_small3" parent="platforms" instance=ExtResource("14_3arw3")]
+position = Vector2(-23, -49)
+scale = Vector2(0.4, 0.4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_7ah0e")
+autoplay = true
+
+[node name="lightning_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_3qdiy")
+script = ExtResource("19_ux6wx")
+
+[connection signal="body_entered" from="stone_statue" to="rope_and_bomb" method="_on_stone_statue_body_entered"]
+[connection signal="property_list_changed" from="chaar_shrine_control/chaar_shrine" to="chaar_shrine_control" method="_on_chaar_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="chaar_shrine_control/chaar_shrine" to="rope_and_bomb/bomb" method="_on_chaar_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="chaar_shrine_control/chaar_shrine" to="Player" method="_on_chaar_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="chaar_shrine_control/chaar_shrine" to="lightning_sfx" method="_on_chaar_shrine_property_list_changed"]
+[connection signal="body_entered" from="rope_and_bomb/bomb" to="chaar_shrine_control/chaar_shrine" method="_on_bomb_body_entered"]
+[connection signal="body_exited" from="rope_and_bomb/bomb" to="chaar_shrine_control/chaar_shrine" method="_on_bomb_body_exited"]
+[connection signal="body_entered" from="metal_statue" to="chaar_shrine_control" method="_on_metal_statue_body_entered"]
+[connection signal="body_exited" from="metal_statue" to="chaar_shrine_control" method="_on_metal_statue_body_exited"]
+[connection signal="property_list_changed" from="Player" to="." method="_on_player_property_list_changed"]

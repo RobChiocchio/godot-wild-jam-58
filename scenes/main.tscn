@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6l16qarqobyp"]
+[gd_scene load_steps=7 format=3 uid="uid://b6l16qarqobyp"]
 
 [ext_resource type="Script" path="res://scripts/title_ui_script.gd" id="2_gj461"]
+[ext_resource type="Texture2D" uid="uid://m18b8tkadafb" path="res://assets/ui/mainmenu.png" id="2_tldti"]
 [ext_resource type="Texture2D" uid="uid://dhfo1vlgtpmcw" path="res://assets/ui/single_button.png" id="3_3c6d7"]
-[ext_resource type="Texture2D" uid="uid://dcyn1kxv4kpi7" path="res://assets/ui/wind.png" id="4_tlss5"]
+[ext_resource type="Texture2D" uid="uid://bbmsb0lqf0lsf" path="res://assets/ui/start.png" id="4_7uv0o"]
+[ext_resource type="Texture2D" uid="uid://njwuyxhkulia" path="res://assets/ui/exit.png" id="5_ui2vo"]
+[ext_resource type="Texture2D" uid="uid://b7drn2la5g6ww" path="res://assets/ui/endcard.png" id="6_ak1p3"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("2_gj461")
@@ -20,37 +23,61 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="TextureRect4" type="TextureRect" parent="main_menu/title_ui"]
+layout_mode = 0
+offset_right = 1279.0
+offset_bottom = 802.0
+texture = ExtResource("2_tldti")
+
 [node name="start_button" type="TextureButton" parent="main_menu/title_ui"]
 layout_mode = 0
+offset_left = 39.0
 offset_top = 50.0
-offset_right = 584.0
+offset_right = 623.0
 offset_bottom = 263.0
 texture_normal = ExtResource("3_3c6d7")
 stretch_mode = 0
 
-[node name="settings_button" type="TextureButton" parent="main_menu/title_ui"]
+[node name="exit_button" type="TextureButton" parent="main_menu/title_ui"]
 layout_mode = 0
-offset_top = 293.0
-offset_right = 584.0
-offset_bottom = 506.0
+offset_left = 39.0
+offset_top = 545.0
+offset_right = 623.0
+offset_bottom = 758.0
 texture_normal = ExtResource("3_3c6d7")
 stretch_mode = 0
 
 [node name="credits_button" type="TextureButton" parent="main_menu/title_ui"]
 layout_mode = 0
-offset_top = 536.0
-offset_right = 584.0
-offset_bottom = 749.0
+offset_left = 39.0
+offset_top = 298.0
+offset_right = 623.0
+offset_bottom = 511.0
 texture_normal = ExtResource("3_3c6d7")
 stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="main_menu/title_ui"]
 layout_mode = 0
-offset_left = 39.0
+offset_left = 78.0
 offset_top = 85.0
-offset_right = 197.0
+offset_right = 236.0
 offset_bottom = 226.0
-texture = ExtResource("4_tlss5")
+texture = ExtResource("4_7uv0o")
+
+[node name="TextureRect2" type="TextureRect" parent="main_menu/title_ui"]
+offset_left = 224.0
+offset_top = 331.0
+offset_right = 382.0
+offset_bottom = 472.0
+rotation = 1.57079
+texture = ExtResource("4_7uv0o")
+
+[node name="TextureRect3" type="TextureRect" parent="main_menu/title_ui"]
+offset_left = 80.0
+offset_top = 581.0
+offset_right = 238.0
+offset_bottom = 722.0
+texture = ExtResource("5_ui2vo")
 
 [node name="settings_ui" type="Control" parent="main_menu"]
 anchors_preset = 0
@@ -62,6 +89,22 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="TextureRect" type="TextureRect" parent="main_menu/credits_ui"]
+layout_mode = 0
+offset_right = 1276.0
+offset_bottom = 802.0
+texture = ExtResource("6_ak1p3")
+
+[node name="back_button" type="TextureButton" parent="main_menu/credits_ui"]
+offset_left = 1276.0
+offset_top = 761.0
+offset_right = 1860.0
+offset_bottom = 974.0
+rotation = 3.14159
+texture_normal = ExtResource("4_7uv0o")
+stretch_mode = 0
+
 [connection signal="pressed" from="main_menu/title_ui/start_button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="main_menu/title_ui/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="main_menu/title_ui/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="main_menu/title_ui/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="main_menu/credits_ui/back_button" to="." method="_on_back_button_pressed"]

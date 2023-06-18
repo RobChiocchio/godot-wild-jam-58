@@ -1,7 +1,6 @@
 extends "res://scripts/blowable.gd"
 
 @onready var _sprite = get_node("TextureRect")
-var _set_off = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

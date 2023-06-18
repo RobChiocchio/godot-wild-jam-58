@@ -91,15 +91,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_gjwah")
 }],
 "loop": true,
-"name": &"default",
+"name": &"chaar_default",
 "speed": 10.0
 }]
 
-[node name="chaar_shrine" type="StaticBody2D"]
+[node name="chaar_shrine" type="StaticBody2D" groups=["shrine"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jvtjr")
-autoplay = "default"
+animation = &"chaar_default"
+autoplay = "chaar_default"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -12)

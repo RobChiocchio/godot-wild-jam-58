@@ -1,6 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://dx0qn1r8fb3xc"]
+[gd_scene load_steps=21 format=3 uid="uid://dx0qn1r8fb3xc"]
 
 [ext_resource type="Texture2D" uid="uid://cpkdbeyorl1tm" path="res://assets/sprites/shinto_shrine.png" id="1_cljbc"]
+[ext_resource type="Texture2D" uid="uid://bnhe4p2ppoii7" path="res://assets/sprites/smolderingfirstshrinebeta.png" id="1_j46uy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s7gk"]
+atlas = ExtResource("1_j46uy")
+region = Rect2(0, 0, 229, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kdht"]
+atlas = ExtResource("1_j46uy")
+region = Rect2(229, 0, 229, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4yrh"]
+atlas = ExtResource("1_j46uy")
+region = Rect2(458, 0, 229, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk6pm"]
+atlas = ExtResource("1_j46uy")
+region = Rect2(687, 0, 229, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2to6"]
+atlas = ExtResource("1_j46uy")
+region = Rect2(916, 0, 229, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u506h"]
+atlas = ExtResource("1_j46uy")
+region = Rect2(1145, 0, 229, 318)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_parjc"]
 atlas = ExtResource("1_cljbc")
@@ -50,6 +75,29 @@ region = Rect2(2500, 0, 250, 318)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1s7gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kdht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4yrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2to6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u506h")
+}],
+"loop": true,
+"name": &"destroyed_shrine",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_parjc")
 }, {
 "duration": 1.0,
@@ -87,18 +135,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="dragon_god" type="Node2D"]
+[node name="dragon_god" type="StaticBody2D" groups=["shrine"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -108)
 sprite_frames = SubResource("SpriteFrames_fw7lb")
 animation = &"dragon_god"
 autoplay = "dragon_god"
-frame = 5
-frame_progress = 0.727756
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-405, 140)
 polygon = PackedVector2Array(319, -140, 489, -140, 489, -149, 462, -218, 472, -228, 472, -234, 454, -241, 352, -241, 336, -234, 336, -228, 346, -218, 319, -149)

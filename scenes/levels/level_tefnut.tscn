@@ -1,0 +1,128 @@
+[gd_scene load_steps=21 format=3 uid="uid://eqoq62vdw0fo"]
+
+[ext_resource type="PackedScene" uid="uid://biq8qan3m1fdy" path="res://scenes/objects/rock.tscn" id="1_ejdjx"]
+[ext_resource type="Script" path="res://scripts/level_tefnut.gd" id="1_m8lxy"]
+[ext_resource type="PackedScene" uid="uid://bh5ugrliwtmai" path="res://scenes/platforms/stone_platform.tscn" id="2_8ts8j"]
+[ext_resource type="Texture2D" uid="uid://dleh4wrwavlm2" path="res://assets/ground/desert_floor.png" id="2_jou0k"]
+[ext_resource type="PackedScene" uid="uid://rinhfn2fhyk4" path="res://scenes/platforms/stone_platform_small.tscn" id="3_kxri4"]
+[ext_resource type="PackedScene" uid="uid://3dhenop7fhd1" path="res://scenes/platforms/stone_platform_medium.tscn" id="5_qr32j"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="6_ubur7"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="7_364t1"]
+[ext_resource type="PackedScene" uid="uid://qi66qds5jsgi" path="res://scenes/shrines/tefnut_shrine.tscn" id="8_kcbvk"]
+[ext_resource type="Script" path="res://scripts/tefnut_shrine.gd" id="9_rpr0d"]
+[ext_resource type="PackedScene" uid="uid://pdmvmjpnuuew" path="res://scenes/parallax_background.tscn" id="10_ytv3k"]
+[ext_resource type="AudioStream" uid="uid://ct2scw00dnl8o" path="res://assets/music/Egyptian.wav" id="11_3vi4s"]
+[ext_resource type="AudioStream" uid="uid://jswtpvp3xpah" path="res://assets/sfx/templecollapse.wav" id="12_6fhol"]
+[ext_resource type="Script" path="res://scripts/collapse.gd" id="13_bwgyn"]
+[ext_resource type="AudioStream" uid="uid://do0rt46rhhcu" path="res://assets/sfx/thunder.wav" id="14_kdvhm"]
+[ext_resource type="Script" path="res://scripts/lightning_sfx.gd" id="15_0cud4"]
+[ext_resource type="Texture2D" uid="uid://bbmsb0lqf0lsf" path="res://assets/ui/start.png" id="17_yjw1w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ynxur"]
+friction = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sap8x"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d1xjk"]
+
+[node name="level_tefnut" type="Node2D"]
+script = ExtResource("1_m8lxy")
+
+[node name="rocks2" type="Node" parent="."]
+
+[node name="rock_left" parent="rocks2" instance=ExtResource("1_ejdjx")]
+position = Vector2(-67, -136)
+
+[node name="rock_right" parent="rocks2" instance=ExtResource("1_ejdjx")]
+position = Vector2(189, -138)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ynxur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_sap8x")
+shape = SubResource("WorldBoundaryShape2D_d1xjk")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -91.0
+offset_right = 9000.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_jou0k")
+stretch_mode = 1
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="platform" parent="platforms" instance=ExtResource("2_8ts8j")]
+position = Vector2(-154, -47)
+
+[node name="small_platform" parent="platforms" instance=ExtResource("3_kxri4")]
+position = Vector2(126, -144)
+
+[node name="platform2" parent="platforms" instance=ExtResource("2_8ts8j")]
+position = Vector2(173, -131)
+
+[node name="platform3" parent="platforms" instance=ExtResource("2_8ts8j")]
+position = Vector2(122, -94)
+
+[node name="small_platform2" parent="platforms" instance=ExtResource("3_kxri4")]
+position = Vector2(174, -47)
+
+[node name="platform4" parent="platforms" instance=ExtResource("2_8ts8j")]
+position = Vector2(-102, -129)
+
+[node name="medium_platform" parent="platforms" instance=ExtResource("5_qr32j")]
+position = Vector2(-86, -83)
+
+[node name="Player" parent="." instance=ExtResource("6_ubur7")]
+position = Vector2(-18, -10)
+
+[node name="tefnut_shrine" parent="." instance=ExtResource("8_kcbvk")]
+position = Vector2(65, 2)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("9_rpr0d")
+
+[node name="next_indicator" type="TextureRect" parent="tefnut_shrine"]
+offset_left = 62.5
+offset_top = -142.5
+offset_right = 83.5
+offset_bottom = -124.5
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("17_yjw1w")
+expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_speed = 20.0
+script = ExtResource("7_364t1")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("10_ytv3k")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3vi4s")
+autoplay = true
+
+[node name="collapse" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_6fhol")
+script = ExtResource("13_bwgyn")
+
+[node name="lightning_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_kdvhm")
+script = ExtResource("15_0cud4")
+
+[connection signal="body_entered" from="rocks2/rock_left" to="tefnut_shrine" method="_on_rock_left_body_entered"]
+[connection signal="body_entered" from="rocks2/rock_right" to="tefnut_shrine" method="_on_rock_right_body_entered"]
+[connection signal="property_list_changed" from="Player" to="." method="_on_player_property_list_changed"]
+[connection signal="property_list_changed" from="tefnut_shrine" to="Player" method="_on_tefnut_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="tefnut_shrine" to="collapse" method="_on_tefnut_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="tefnut_shrine" to="lightning_sfx" method="_on_tefnut_shrine_property_list_changed"]

@@ -14,10 +14,6 @@ func _ready():
 	_rope_and_bomb.remove_child(_bomb)
 	_rope.remove_child(_rope_without)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _cut():
 	_rope.remove_child(_rope_with)
 	_rope.add_child(_rope_without)

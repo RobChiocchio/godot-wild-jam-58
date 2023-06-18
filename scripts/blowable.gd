@@ -7,15 +7,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func succ(force) -> void:
 	self.apply_central_force(force)
 	
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if get_contact_count() > 0:
 		for bodies in get_colliding_bodies():
 			if bodies.get_class() == "StaticBody2D":
@@ -31,6 +27,3 @@ func _physics_process(delta):
 		angular_damp = 5
 		linear_damp = 3
 		gravity_scale = 2
-
-func _on_body_entered(body):
-	pass # Replace with function body.

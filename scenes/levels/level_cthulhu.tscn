@@ -1,0 +1,136 @@
+[gd_scene load_steps=23 format=3 uid="uid://cyh4mn8hio3nq"]
+
+[ext_resource type="PackedScene" uid="uid://c0upw48q42o7r" path="res://scenes/shrines/cthulhu_shrine.tscn" id="1_rm4re"]
+[ext_resource type="Script" path="res://scripts/level_cthulhu.gd" id="1_vo1xe"]
+[ext_resource type="PackedScene" uid="uid://t1mfghxab5ih" path="res://scenes/parallax_background_cthulhu.tscn" id="2_dy6ss"]
+[ext_resource type="Script" path="res://scripts/cthulhu_shrine.gd" id="2_gn6on"]
+[ext_resource type="Texture2D" uid="uid://wet3huxrbycm" path="res://assets/ground/dragonground.png" id="3_d2k4s"]
+[ext_resource type="PackedScene" uid="uid://xcfais7p0tc6" path="res://scenes/player.tscn" id="4_woe2e"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="5_lxyfh"]
+[ext_resource type="PackedScene" uid="uid://cpefvtl4btxfi" path="res://scenes/objects/rain_barrier.tscn" id="6_w5xeg"]
+[ext_resource type="AudioStream" uid="uid://citnrxdcngqmc" path="res://assets/music/Occult.wav" id="7_qxsb8"]
+[ext_resource type="Script" path="res://scripts/rain_barrier.gd" id="8_m2fto"]
+[ext_resource type="PackedScene" uid="uid://cdq5vfshq8qwu" path="res://scenes/platforms/mossy_platform_small.tscn" id="9_enbxo"]
+[ext_resource type="PackedScene" uid="uid://ilngxnkqrxmu" path="res://scenes/statues/stone_statue.tscn" id="10_oysog"]
+[ext_resource type="PackedScene" uid="uid://b1bobqr33t2ll" path="res://scenes/objects/final_statue.tscn" id="11_3o7rr"]
+[ext_resource type="Script" path="res://scripts/final_statue.gd" id="12_euvva"]
+[ext_resource type="PackedScene" uid="uid://4bx68t6ch5ip" path="res://scenes/lightning.tscn" id="14_26i0g"]
+[ext_resource type="Script" path="res://scripts/lightning.gd" id="15_ys6kg"]
+[ext_resource type="Texture2D" uid="uid://bbmsb0lqf0lsf" path="res://assets/ui/start.png" id="16_vyc47"]
+[ext_resource type="AudioStream" uid="uid://do0rt46rhhcu" path="res://assets/sfx/thunder.wav" id="18_smfnh"]
+[ext_resource type="Script" path="res://scripts/lightning_sfx.gd" id="19_1xf4u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gbu3t"]
+friction = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3epb3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3c0gp"]
+
+[node name="level_cthulhu" type="Node2D"]
+script = ExtResource("1_vo1xe")
+
+[node name="cthulhu_shrine" parent="." instance=ExtResource("1_rm4re")]
+position = Vector2(25, -35)
+collision_layer = 2
+script = ExtResource("2_gn6on")
+
+[node name="next_indicator" type="TextureRect" parent="cthulhu_shrine"]
+offset_left = 5.0
+offset_top = -10.0
+offset_right = 26.0
+offset_bottom = 8.0
+texture = ExtResource("16_vyc47")
+expand_mode = 1
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource("2_dy6ss")]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_gbu3t")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -92.0
+offset_right = 9000.0
+offset_bottom = 408.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_d2k4s")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+material = SubResource("ShaderMaterial_3epb3")
+shape = SubResource("WorldBoundaryShape2D_3c0gp")
+
+[node name="Player" parent="." instance=ExtResource("4_woe2e")]
+position = Vector2(-98, -11)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -66)
+zoom = Vector2(4, 4)
+position_smoothing_speed = 20.0
+script = ExtResource("5_lxyfh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qxsb8")
+autoplay = true
+
+[node name="rain_cloud" parent="." instance=ExtResource("6_w5xeg")]
+position = Vector2(-15, -22)
+lock_rotation = true
+script = ExtResource("8_m2fto")
+
+[node name="rain_cloud2" parent="." instance=ExtResource("6_w5xeg")]
+position = Vector2(60, -22)
+lock_rotation = true
+script = ExtResource("8_m2fto")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="StaticBody2D3" parent="Node" instance=ExtResource("9_enbxo")]
+position = Vector2(-23, -99)
+scale = Vector2(0.4, 0.4)
+
+[node name="StaticBody2D" parent="Node" instance=ExtResource("9_enbxo")]
+position = Vector2(73, -52)
+scale = Vector2(0.4, 0.4)
+
+[node name="StaticBody2D2" parent="Node" instance=ExtResource("9_enbxo")]
+position = Vector2(-87, -56)
+scale = Vector2(0.4, 0.4)
+
+[node name="statues" type="Node" parent="."]
+
+[node name="stone_statue" parent="statues" instance=ExtResource("10_oysog")]
+position = Vector2(-22, -107)
+contact_monitor = true
+
+[node name="final_statue" parent="statues" instance=ExtResource("11_3o7rr")]
+position = Vector2(-81, -65)
+center_of_mass_mode = 1
+center_of_mass = Vector2(3, -3)
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("12_euvva")
+
+[node name="lightning" parent="." instance=ExtResource("14_26i0g")]
+position = Vector2(18, -3)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("15_ys6kg")
+
+[node name="lightning_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_smfnh")
+script = ExtResource("19_1xf4u")
+
+[connection signal="property_list_changed" from="cthulhu_shrine" to="Player" method="_on_cthulhu_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="cthulhu_shrine" to="lightning_sfx" method="_on_cthulhu_shrine_property_list_changed"]
+[connection signal="property_list_changed" from="Player" to="." method="_on_player_property_list_changed"]
+[connection signal="body_entered" from="statues/final_statue" to="cthulhu_shrine" method="_on_final_statue_body_entered"]
+[connection signal="body_entered" from="statues/final_statue" to="lightning" method="_on_final_statue_body_entered"]

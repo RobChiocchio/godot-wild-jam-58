@@ -205,7 +205,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="tefnut_body" type="StaticBody2D"]
+[node name="tefnut_body" type="StaticBody2D" groups=["shrine"]]
 
 [node name="intact_collision" type="CollisionPolygon2D" parent="."]
 position = Vector2(-405, 140)
@@ -217,5 +217,5 @@ polygon = PackedVector2Array(-97, -1, 103, -1, 103, -19, 75, -46, 23, -46, 23, -
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -136)
 sprite_frames = SubResource("SpriteFrames_7mnxu")
-animation = &"tefnut_leaves"
+animation = &"tefnut_full"
 autoplay = "tefnut_full"

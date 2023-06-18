@@ -15,7 +15,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	#if _player.position.x > pos_bound or _player.position.x < neg_bound:
 	#	pos_bound = lerp(pos_bound, _player.position.x + bound_offset, 0.04)
 	#	neg_bound = lerp(neg_bound, _player.position.x - bound_offset, 0.04)

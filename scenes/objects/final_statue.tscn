@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1bobqr33t2ll"]
+
+[ext_resource type="Texture2D" uid="uid://d1vdbnd0c7lvq" path="res://assets/objects/copperknight.png" id="1_80r2v"]
+
+[node name="final_statue" type="RigidBody2D"]
+position = Vector2(-3, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(-12, 0, 15, 0, 15, -13, 18, -15, 18, -40, 12, -41, 12, -58, -10, -58, -10, -65, -13, -65, -13, -36, -15, -35, -15, -29, -13, -27, -13, -13, -12, -11)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -6.0
+offset_top = -29.0
+offset_right = 34.0
+offset_bottom = 43.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_80r2v")
+metadata/_edit_use_anchors_ = true
